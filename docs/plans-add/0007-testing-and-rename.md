@@ -56,3 +56,11 @@
 - `.claude/addToolsSrc/` → `.claude/addfTools/`（リネーム済み）
 - `.claude/tests/`（新規作成）
 - settings.json, .claudeignore, docs/, README 等の参照更新
+
+## 実装完了状況
+- リネーム完了、全参照更新・ビルド確認済み
+- テスト基盤作成完了:
+  - スキルテスト: 7件（自然言語シナリオ）
+  - フックテスト: 2件（13アサーション、全 PASS）
+  - ツールテスト: 1件（8アサーション、全 PASS）
+  - テストランナー: run-all.sh（一括実行）

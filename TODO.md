@@ -15,7 +15,7 @@
 | 4 | 4 | `docs/plans-add/0004-gui-test-cross-platform.md` | 完了 |
 | 5 | 5 | `docs/plans-add/0005-everything-claude-code-research.md` | 完了 |
 | 6 | 6 | `docs/plans-add/0006-skill-quality.md` | 未着手 |
-| 7 | 7 | `docs/plans-add/0007-testing-and-rename.md` | 未着手 |
+| 7 | 7 | `docs/plans-add/0007-testing-and-rename.md` | 完了 |
 
 オーナーリクエスト:
 タスクが無くなったら以下に取り組んでください
