@@ -14,7 +14,7 @@ AccrateDevDrive Framework です
 # 哲学
 AccrateDevDrive由来のソースコードは .claude 配下に収めてください。
 AccrateDevDrive由来のスキルは add- プレフィックスを持ちます
-
+プロジェクトルート配下にADD由来のファイルをなるべく置かないべきです。
 
 ---
 

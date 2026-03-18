@@ -1,1 +1,7 @@
 node_modules
+
+# コンパイル済みバイナリ（Claude の読解対象外）
+.claude/addToolsSrc/window-info
+.claude/addToolsSrc/capture-window
+.claude/addToolsSrc/annotate-grid
+.claude/addToolsSrc/clip-image

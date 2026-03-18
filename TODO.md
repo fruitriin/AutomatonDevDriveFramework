@@ -1,14 +1,20 @@
 # TODO
 
-`docs/plans/` の完了状態・優先度をトラックする。
-`docs/plans/` と TODO が一致しなければ TODO を編集する。
+`docs/plans/` (プロジェクト用) と `docs/plans-add/` (ADD フレームワーク開発用) の完了状態・優先度をトラックする。
+計画ファイルと TODO が一致しなければ TODO を編集する。
 
-## 現在のフェーズ: （次に着手）
+## 現在のフェーズ: Phase 2（README改定）
 
 ## バックログ
 
 | 優先度 | Phase | 計画ファイル | 状態 |
 |---|---|---|---|
+| 1 | 1 | `docs/plans-add/0001-immediate-fixes.md` | 完了 |
+| 2 | 2 | `docs/plans-add/0002-readme-and-skill-docs.md` | 未着手 |
+| 3 | 3 | `docs/plans-add/0003-english-docs.md` | 未着手 |
+| 4 | 4 | `docs/plans-add/0004-gui-test-cross-platform.md` | 未着手 |
+| 5 | 5 | `docs/plans-add/0005-everything-claude-code-research.md` | 未着手 |
+| 6 | 6 | `docs/plans-add/0006-skill-quality.md` | 未着手 |
 
 オーナーリクエスト:
 タスクが無くなったら以下に取り組んでください

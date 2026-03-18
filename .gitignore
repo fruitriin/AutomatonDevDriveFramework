@@ -1,3 +1,6 @@
+# 依存・ビルド成果物
+node_modules
+
 # スキル経験ファイル（ローカル蓄積、共有しない）
 .claude/skills/*.exp.md
 CLAUDE.local.md

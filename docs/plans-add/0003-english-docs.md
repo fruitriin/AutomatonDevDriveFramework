@@ -1,0 +1,20 @@
+# 計画: 英語ドキュメント作成
+
+## 動機
+国際的なコントリビューターが参加できるよう、主要ドキュメントの英語版を作成する。
+
+## 設計
+
+### 1. README.en.md
+- README.md の英訳（Plan 0002 での改定後の内容を基に）
+- 日本語 README へのリンクを含める
+
+### 2. CONTRIBUTING.en.md
+- CONTRIBUTING.md の英訳
+- 計画駆動モデルの説明を英語で
+
+## 依存
+- Plan 0002（README 改定）完了後に実施するのが効率的
+
+## 影響範囲
+- `README.en.md`, `CONTRIBUTING.en.md`
