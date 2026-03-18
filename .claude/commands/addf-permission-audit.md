@@ -12,7 +12,9 @@ user_invocable: true
 ## 手順
 
 ### 1. ノウハウ読み込み
-`docs/knowhow/ADDF/permission-settings-pattern.md` を読み、3パターン × 2プロジェクト種別の分類ルールを把握する。
+`docs/knowhow/ADDF/permission-settings-pattern.md` を読み、以下を把握する:
+- 3パターン × 2プロジェクト種別の分類ルール
+- 権限フォーマットの技術仕様（評価順序、ワイルドカード構文、`:*` 非推奨など）
 
 ### 2. プロジェクト種別の判定
 `CLAUDE.repo.md`（または `CLAUDE.repo.example.md`）を読み、以下を判定する:
@@ -74,10 +76,24 @@ user_invocable: true
 |---|---|---|---|
 ```
 
-### 8. apply モード
+### 8. 構文チェック
+提案する権限エントリが公式仕様に準拠していることを確認する:
+- `:*` 構文（非推奨）を使っていないか → ` *` に修正
+- 既存の設定に `:*` が残っていれば移行を提案する
+
+### 9. コントリビューションレビュー
+`addf-contribution-agent` をレビュアーとして起動し、提案内容の分離パターン遵守を検証する:
+- settings.json に入れるべきでない権限が混入していないか
+- settings.local.json に入れるべき権限が settings.json に入っていないか
+
+### 10. apply モード
 `$ARGUMENTS` に `apply` が指定されている場合:
 - 提案に基づいて `settings.json` / `settings.local.json` を自動編集する
 - 編集後の内容を表示して確認を求める
+
+### 11. ユーザー確認
+**コミットしない**。変更内容をユーザーに提示し、正しいか確認を求める。
+ユーザーが承認した場合のみコミットする。
 
 ## 経験の活用
 - 実行前に `addf-permission-audit.exp.md` が存在すれば読み、過去の判断パターンを考慮する
