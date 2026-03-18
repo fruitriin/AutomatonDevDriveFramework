@@ -24,11 +24,8 @@
   "permissions": {
     "allow": [
       "Bash(cp:*)",
-      "Bash(mv:*)",
-      "Bash(rm:*)",
       "Bash(mkdir:*)",
       "Bash(ls:*)",
-      "Bash(chmod:*)",
       "Bash(tail:*)",
       "Bash(cd:*)",
       "Bash(git status:*)",
@@ -44,7 +41,8 @@
       "Bash(git show:*)",
       "Bash(git merge:*)",
       "Bash(git stash:*)",
-      "Bash(bash .claude/tests/run-all.sh:*)"
+      "Bash(bash .claude/tests/run-all.sh:*)",
+      "Bash(uv run --python 3.11 .claude/addfTools/:*)"
     ],
     "ask": [
       "Bash(git push:*)",
