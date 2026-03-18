@@ -17,4 +17,10 @@
 - Plan 0002（README 改定）完了後に実施するのが効率的
 
 ## 影響範囲
-- `README.en.md`, `CONTRIBUTING.en.md`
+- `README.en.md`, `CONTRIBUTING.en.md`, `README.md`（英語版へのリンク追加）
+
+## 実装完了状況
+- 全項目を実施完了（2026-03-18）
+- コードレビュー Warning 2件を修正:
+  - リンクテキストの形式を統一
+  - 影響範囲に README.md を追加

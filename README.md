@@ -1,5 +1,7 @@
 # AccrateDevDrive Framework
 
+[English README](README.en.md)
+
 AI駆動自動推進フレームワークです。
 プロジェクトをクローンし、いくつかのファイルを差し替えて、計画書（`docs/plans/`）を与えれば、AIエージェントが自律的に開発を推進します。
 
