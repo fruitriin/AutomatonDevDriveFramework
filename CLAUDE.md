@@ -8,7 +8,7 @@
 ## ブートシーケンス（セッション開始時に必ず実行）
 
 1. @.claude/Feedback.md を読む — 未対応の改善アクションを確認する
-2. @TODO.md を読む — タスクバックログと優先度を把握する
+2. @docs/plans-add/TODO.addf.md を読む — ADDF 開発タスクバックログと優先度を把握する
 3. @.claude/Progress.md を読む — 現在進行中のタスクがあれば継続する
 4. **TODO に未完了タスクがない場合** — オーナーに次のタスクを確認する
 5. 次に着手する Plan を特定したら、knowhow サブエージェントを起動する:
@@ -18,10 +18,12 @@
 
 ## 開発プロセスファイル一覧
 
-- **`TODO.md`**: タスクバックログ。`docs/plans/` の完了状態・優先度を追跡する
+- **`TODO.md`**: ダウンストリームプロジェクト用タスクバックログ。`docs/plans/` の完了状態・優先度を追跡する
+- **`docs/plans-add/TODO.addf.md`**: ADDF 開発用タスクバックログ。`docs/plans-add/` の完了状態・優先度を追跡する
 - **`.claude/Progress.md`**: 現在のタスク進捗。運用ルールもここに記載
 - **`.claude/Feedback.md`**: 問題・改善アクションの記録
-- `docs/plans/`: 実装計画ファイル
+- `docs/plans/`: ダウンストリームプロジェクトの実装計画ファイル
+- `docs/plans-add/`: ADDF 開発の実装計画ファイル
 - `docs/knowhow/`: 実装で得たノウハウの蓄積
 
 ---
