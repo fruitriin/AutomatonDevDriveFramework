@@ -157,6 +157,46 @@
 
 フックは権限システムの**前**に実行される。フック出力でツール呼び出しを承認または拒否できる。
 
+### 破壊的操作のテンプレート除外方針
+
+`mv`, `rm`, `chmod` は汎用的なファイル操作だが、**破壊的な副作用を持つため settings.json（テンプレート）には含めない**。`git push` が `ask` に入っているのと同じ判断基準。
+
+- テンプレート（settings.json）には安全な操作のみ含める
+- 慣れた開発者は自分の責任で settings.local.json に `allow` として追加する
+- これにより、ダウンストリームの新規プロジェクトがデフォルトで安全な状態で始まる
+
+### gh コマンドの read/write 分離
+
+`gh` のサブコマンドは参照系と更新系で権限レベルを分ける:
+
+**allow（参照系）**:
+- `gh repo view`, `gh repo list`, `gh repo clone`
+- `gh issue list`, `gh issue view`, `gh issue status`
+- `gh pr list`, `gh pr view`, `gh pr status`, `gh pr diff`, `gh pr checks`, `gh pr checkout`
+
+**ask（更新系）**:
+- `gh issue create`, `gh issue comment`, `gh issue close`, `gh issue edit`
+- `gh pr create`, `gh pr comment`, `gh pr merge`, `gh pr close`, `gh pr edit`, `gh pr review`
+- `gh repo create`, `gh repo edit`, `gh repo delete`, `gh repo fork`
+
+`gh api` は GET/POST の区別が引数順序に依存し、プレフィックスマッチでは GET に限定できない（`-f` パラメータ付与で自動 POST 化、`--method` の位置が不定）。公式ドキュメントも「引数を制約するパターンは脆弱」と警告している。allow/ask どちらにも入れず都度確認（デフォルト動作）が妥当。
+
+### settings.json と settings.local.json の役割分担まとめ
+
+**settings.json（テンプレート）** — 副作用のない安全な操作のみ:
+- 組み込みツール（Read, Edit, Write, Glob, Grep, Agent, Skill 等）
+- `--help`, `--version`
+- ファイル操作: `cp`, `mkdir`, `ls`, `tail`, `cd`（mv/rm/chmod は除外）
+- git 参照系 + commit/add（push は ask）
+- gh 参照系: `view`, `list`, `status`, `diff`, `checks`, `checkout`, `clone`
+- フレームワークツール: テスト実行、lint スクリプト
+
+**settings.local.json（パワーユーザー向け）** — 自己責任で許可:
+- 破壊的ファイル操作: `mv`, `rm`, `chmod`
+- ADDF 開発ツール: `sed`, `find`, `swiftc`, `addfTools/build.sh`
+- gh 更新系: `create`, `comment`, `close`, `edit`, `merge`, `review`, `fork`
+- `gh api` は含めない（都度確認）
+
 ## 注意点・制約
 
 - `settings.local.json` は `.gitignore` 対象なのでコミットされない
