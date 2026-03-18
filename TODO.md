@@ -18,6 +18,7 @@
 | 7 | 7 | `docs/plans-add/0007-testing-and-rename.md` | 完了 |
 | 8 | 8 | `docs/plans-add/0008-robustness-and-consistency.md` | 未着手 |
 | 9 | 9 | `docs/plans-add/0009-experience-bootstrap.md` | 未着手 |
+| 10 | 10 | `docs/plans-add/0010-skill-description-and-metrics.md` | 未着手 |
 
 オーナーリクエスト:
 タスクが無くなったら以下に取り組んでください
