@@ -15,12 +15,12 @@ import Foundation
 // MARK: - GUI テスト有効チェック
 do {
     let scriptDir = URL(fileURLWithPath: CommandLine.arguments[0]).deletingLastPathComponent().path
-    let configPath = scriptDir + "/../add-Behavier.toml"
+    let configPath = scriptDir + "/../add-Behavior.toml"
     if let contents = try? String(contentsOfFile: configPath, encoding: .utf8) {
         for line in contents.components(separatedBy: .newlines) {
             let trimmed = line.trimmingCharacters(in: .whitespaces)
             if trimmed.hasPrefix("enable") && trimmed.contains("=") && trimmed.contains("false") {
-                print("{\"disabled\": true, \"reason\": \"gui-test.enable = false in add-Behavier.toml\"}")
+                print("{\"disabled\": true, \"reason\": \"gui-test.enable = false in add-Behavior.toml\"}")
                 exit(0)
             }
         }

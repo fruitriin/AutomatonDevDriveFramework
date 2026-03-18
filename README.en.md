@@ -103,7 +103,7 @@ Skills provided by the ADD framework (invoked via `/command-name`):
 
 ### GUI Testing (Optional)
 
-To enable, set `enable = true` in `.claude/add-Behavier.toml`. macOS only.
+To enable, set `enable = true` in `.claude/add-Behavior.toml`. macOS only.
 
 | Skill | Invocation | Description |
 |---|---|---|

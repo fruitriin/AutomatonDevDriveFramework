@@ -1,5 +1,0 @@
-# ADD Framework 固有の振る舞いを設定としてもたせるファイルです
-#
-
-[gui-test]
-enable = false # true にすると、 window-info, capture-window が使用可能になります。

@@ -28,6 +28,15 @@ machine = "mac"  # "mac" | "linux" | "windows"
 - macOS での Screen Recording 権限の設定方法
 
 ## 影響範囲
-- `.claude/add-Behavier.toml`
+- `.claude/add-Behavior.toml`（旧 `add-Behavier.toml` からリネーム）
 - `.claude/skills/add-gui-test.md`（プラットフォーム判定ロジック追加）
-- ドキュメント追加
+- `.claude/skills/optional/add-gui-test.md`（同上）
+- `.claude/addToolsSrc/window-info.swift`, `capture-window.swift`（参照更新）
+- `README.md`, `README.en.md`（ファイル名参照更新）
+- `docs/guides/gui-test-setup.md`（新規作成）
+
+## 実装完了状況
+- 全項目を実施完了（2026-03-18）
+- `add-Behavier.toml` → `add-Behavior.toml` リネーム＋全参照更新
+- `machine` 設定追加、プラットフォーム判定ロジック追加
+- セットアップガイド作成、Swift バイナリ再ビルド成功

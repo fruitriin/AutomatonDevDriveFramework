@@ -103,7 +103,7 @@ ADD フレームワークが提供するスキル（`/コマンド名` で呼び
 
 ### GUI テスト（オプション）
 
-有効化するには `.claude/add-Behavier.toml` で `enable = true` に設定してください。macOS のみ対応。
+有効化するには `.claude/add-Behavior.toml` で `enable = true` に設定してください。macOS のみ対応。
 
 | スキル | 呼び出し | 説明 |
 |---|---|---|

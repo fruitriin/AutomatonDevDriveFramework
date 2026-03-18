@@ -14,7 +14,8 @@
 
 ## 改善アクション
 
-- Plan 0004 実施時に `add-Behavier.toml` を `add-Behavior.toml` にリネームする（コードレビューで検出された typo）
 - ADD フレームワーク開発の計画は `docs/plans-add/`、knowhow index は `INDEX.add.md` で管理する（`docs/plans/` と `INDEX.md` はダウンストリームプロジェクト用）
 
 ## 完了済み
+
+- ~~Plan 0004 実施時に `add-Behavier.toml` を `add-Behavior.toml` にリネームする~~ → Plan 0004 で実施済み
