@@ -1,9 +1,11 @@
-# AccrateDevDrive Framework
+# AutomatonDevDrive Framework
+
+> ADDF is one of Agentic Driven Development Framework
 
 [English README](README.en.md)
 
-AI駆動自動推進フレームワークです。
-プロジェクトをクローンし、いくつかのファイルを差し替えて、計画書（`docs/plans/`）を与えれば、AIエージェントが自律的に開発を推進します。
+自動人形（Automaton）が開発を自律駆動するフレームワークです。
+プロジェクトをクローンし、いくつかのファイルを差し替えて、計画書（`docs/plans/`）を与えれば、AIエージェントが自律的にタスクを選び、実装し、品質検証まで完遂します。
 
 ## 特徴
 
@@ -18,7 +20,7 @@ AI駆動自動推進フレームワークです。
 ### 1. リポジトリをクローン
 
 ```bash
-git clone https://github.com/your-org/AccrateDevDriveFramwork.git my-project
+git clone https://github.com/your-org/AutomatonDevDriveFramework.git my-project
 cd my-project
 ```
 
@@ -89,7 +91,7 @@ cd my-project
 
 ## フレームワークスキル
 
-ADD フレームワークが提供するスキル（`/コマンド名` で呼び出し）:
+ADDF が提供するスキル（`/コマンド名` で呼び出し）:
 
 ### ノウハウ管理
 
@@ -155,3 +157,17 @@ ADD フレームワークが提供するスキル（`/コマンド名` で呼び
 - **`.claude/settings.json`** — ダウンストリームテンプレートの実例。副作用のない操作のみ allow する設計方針
 - **`.claude/Progresses/`** — 完了タスクのアーカイブ。Progress.md の運用フローの実例
 - **`git log`** — コミットログ規約・品質ゲートの実際の適用結果
+
+## 名前について
+
+このフレームワークの正式名称は **AutomatonDevDrive Framework**。
+
+……なのですが、頭文字を拾うと **ADDF**。
+そして ADDF を展開すると — **A**gentic **D**riven **D**evelopment **F**ramework。
+
+偶然ではありません。
+
+Automaton（自動人形）は、AIエージェントが自律的にタスクを選び、実装し、品質を検証する様子をそのまま指しています。人間が逐一指示しなくても、自動人形は動き続ける。DevDrive はその動力源——開発を駆動するエンジンのような存在です。
+
+表の名前は Automaton、裏の名前は Agentic。どちらも同じものを指している。
+気づいた人はニヤリとしてください。

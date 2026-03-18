@@ -1,9 +1,11 @@
-# AccrateDevDrive Framework
+# AutomatonDevDrive Framework
+
+> ADDF is one of Agentic Driven Development Framework
 
 [日本語版 README はこちら](README.md)
 
-An AI-driven autonomous development framework.
-Clone the project, replace a few files, provide a plan (`docs/plans/`), and the AI agent will autonomously drive development forward.
+A framework where Automatons — AI agents — autonomously drive your development.
+Clone the project, replace a few files, provide a plan (`docs/plans/`), and the AI agent will autonomously select tasks, implement them, and run quality verification end to end.
 
 ## Features
 
@@ -18,7 +20,7 @@ Clone the project, replace a few files, provide a plan (`docs/plans/`), and the 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-org/AccrateDevDriveFramwork.git my-project
+git clone https://github.com/your-org/AutomatonDevDriveFramework.git my-project
 cd my-project
 ```
 
@@ -44,7 +46,17 @@ Even files in `.gitignore` can be accessed by Claude Code via direct path specif
 
 ### 4. Create Plans and Start Development
 
-Create plan files in `docs/plans/` and add them to the `TODO.md` backlog.
+Plans can be created from rough notes or bullet points. For example:
+
+```markdown
+<!-- jot this down in plan.md... -->
+- README skills section is empty
+- No English documentation
+- GUI tests are macOS-only
+```
+
+Just hand it to Claude (type `plan.md`, paste the bullets into chat, etc.) and the AI will automatically review the project, break it into formal plan files, and populate `docs/plans/` and `TODO.md`. ADDF itself was bootstrapped this way.
+
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the plan file format.
 
 ```
@@ -79,7 +91,7 @@ The AI agent will then autonomously cycle through: `TODO.md` → `docs/plans/` �
 
 ## Framework Skills
 
-Skills provided by the ADD framework (invoked via `/command-name`):
+Skills provided by ADDF (invoked via `/command-name`):
 
 ### Knowhow Management
 
@@ -135,3 +147,16 @@ Plan → Implementation → Quality Verification → Commit
 - **Parallel Implementation**: Parallel subtask execution using git worktrees
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+
+## About the Name
+
+The official name of this framework is **AutomatonDevDrive Framework**.
+
+But if you take its initials — **ADDF** — and expand them, you get: **A**gentic **D**riven **D**evelopment **F**ramework.
+
+Not a coincidence.
+
+An Automaton is exactly what the AI agent is: something that autonomously selects tasks, implements them, and verifies quality — no hand-holding required. DevDrive is the engine that keeps it moving, the mechanism that propels development forward.
+
+The surface name is Automaton. The hidden name is Agentic. Both describe the same thing.
+If you caught that — nice.

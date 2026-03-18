@@ -4,7 +4,7 @@
      CLAUDE.repo.md から @メンションで展開されるため、アップストリーム（ADDF本体）
      でもそのまま使われる相互参照パターンです。 -->
 
-AccrateDevDrive Framework です
+AutomatonDevDrive Framework です
 このリポジトリはAI駆動自動推進フレームワークです。
 
 
@@ -28,8 +28,8 @@ AccrateDevDrive Framework です
 ```
 
 # 哲学
-AccrateDevDrive由来のソースコードは .claude 配下に収めてください。
-AccrateDevDrive由来のスキルは addf- プレフィックスを持ちます
+AutomatonDevDrive由来のソースコードは .claude 配下に収めてください。
+AutomatonDevDrive由来のスキルは addf- プレフィックスを持ちます
 プロジェクトルート配下にADD由来のファイルをなるべく置かないべきです。
 
 ---
