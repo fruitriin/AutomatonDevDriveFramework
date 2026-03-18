@@ -1,5 +1,5 @@
 ---
-name: add-experience
+name: addf-experience
 description: |
   skills配下のskillから、.exp ファイルへのファイルメンションの書式の正しさを確認する
 user_invocable: true

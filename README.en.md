@@ -8,7 +8,7 @@ Clone the project, replace a few files, provide a plan (`docs/plans/`), and the 
 ## Features
 
 - **Knowhow Accumulation** — Records implementation insights in `docs/knowhow/` and automatically references them in subsequent tasks
-- **Self-Driving Loop** — `/loop 1h /add-dev-loop` autonomously selects and implements tasks from TODO
+- **Self-Driving Loop** — `/loop 1h /addf-dev-loop` autonomously selects and implements tasks from TODO
 - **Separation of Skills and Experience** — Skill definitions (`.md`) and experience accumulation (`.exp.md`) are separated; experience is stored locally
 - **Quality Gate** — Automatically runs code review, security review, and contribution detection
 - **GUI Testing** (optional) — Visual UI verification via screenshots and image analysis on macOS
@@ -48,7 +48,7 @@ Create plan files in `docs/plans/` and add them to the `TODO.md` backlog.
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the plan file format.
 
 ```
-/loop 1h /add-dev-loop
+/loop 1h /addf-dev-loop
 ```
 
 The AI agent will then autonomously cycle through: `TODO.md` → `docs/plans/` → Implementation → Quality verification → Commit.
@@ -85,31 +85,31 @@ Skills provided by the ADD framework (invoked via `/command-name`):
 
 | Skill | Invocation | Description |
 |---|---|---|
-| **add-knowhow** | `/add-knowhow <topic>` | Records implementation insights in `docs/knowhow/`. Automatically checks for duplicates and merges with existing knowhow |
-| **add-knowhow-index** | `/add-knowhow-index [reindex]` | References the knowhow index, or rebuilds it with `reindex` |
-| **add-knowhow-filter** | `/add-knowhow-filter <plan-path>` | Filters and returns only knowhow relevant to a given Plan |
+| **addf-knowhow** | `/addf-knowhow <topic>` | Records implementation insights in `docs/knowhow/`. Automatically checks for duplicates and merges with existing knowhow |
+| **addf-knowhow-index** | `/addf-knowhow-index [reindex]` | References the knowhow index, or rebuilds it with `reindex` |
+| **addf-knowhow-filter** | `/addf-knowhow-filter <plan-path>` | Filters and returns only knowhow relevant to a given Plan |
 
 ### Development Loop
 
 | Skill | Invocation | Description |
 |---|---|---|
-| **add-dev-loop** | `/loop 1h /add-dev-loop` | Autonomously selects unfinished tasks from TODO.md, implements them, runs quality verification, and commits |
+| **addf-dev-loop** | `/loop 1h /addf-dev-loop` | Autonomously selects unfinished tasks from TODO.md, implements them, runs quality verification, and commits |
 
 ### Experience Management
 
 | Skill | Invocation | Description |
 |---|---|---|
-| **add-experience** | `/add-experience` | Validates file mention syntax in skill experience files (`.exp.md`) |
+| **addf-experience** | `/addf-experience` | Validates file mention syntax in skill experience files (`.exp.md`) |
 
 ### GUI Testing (Optional)
 
-To enable, set `enable = true` in `.claude/add-Behavior.toml`. macOS only.
+To enable, set `enable = true` in `.claude/addf-Behavior.toml`. macOS only.
 
 | Skill | Invocation | Description |
 |---|---|---|
-| **add-gui-test** | `/add-gui-test <scenario>` | Runs GUI tests based on scenarios in `docs/test-scenarios/` |
-| **add-annotate-grid** | `/add-annotate-grid <path>` | Draws grid lines and coordinate labels on PNG images (for LLM coordinate recognition) |
-| **add-clip-image** | `/add-clip-image <path>` | Clips a specified region from a PNG image (for extracting areas of interest) |
+| **addf-gui-test** | `/addf-gui-test <scenario>` | Runs GUI tests based on scenarios in `docs/test-scenarios/` |
+| **addf-annotate-grid** | `/addf-annotate-grid <path>` | Draws grid lines and coordinate labels on PNG images (for LLM coordinate recognition) |
+| **addf-clip-image** | `/addf-clip-image <path>` | Clips a specified region from a PNG image (for extracting areas of interest) |
 
 ## Framework Agents
 
@@ -117,11 +117,11 @@ Sub-agents automatically launched during quality gates and boot sequences:
 
 | Agent | Purpose | Trigger |
 |---|---|---|
-| **add-knowhow-agent** | Filters knowhow relevant to a Plan | Boot sequence (at task start) |
-| **add-code-review-agent** | Reviews code quality and readability | Quality verification (at task completion) |
-| **add-security-review-agent** | Inspects and reports security vulnerabilities | Quality verification (optional) |
-| **add-contribution-agent** | Detects contribution candidates for the framework | Quality verification (at task completion) |
-| **add-ui-test-agent** | Visual UI verification via screenshots and image analysis | Quality verification (optional) |
+| **addf-knowhow-agent** | Filters knowhow relevant to a Plan | Boot sequence (at task start) |
+| **addf-code-review-agent** | Reviews code quality and readability | Quality verification (at task completion) |
+| **addf-security-review-agent** | Inspects and reports security vulnerabilities | Quality verification (optional) |
+| **addf-contribution-agent** | Detects contribution candidates for the framework | Quality verification (at task completion) |
+| **addf-ui-test-agent** | Visual UI verification via screenshots and image analysis | Quality verification (optional) |
 
 ## Development Process
 

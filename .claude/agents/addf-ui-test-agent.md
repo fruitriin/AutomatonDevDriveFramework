@@ -1,12 +1,12 @@
 ---
-name: add-ui-test-agent
+name: addf-ui-test-agent
 description: GUI テストを実施する。.claude/addToolsSrc/ のツールを使い、スクリーンショット撮影・グリッドアノテーション・画像クリップによるUIの視覚的検証を行う。
 tools: Read, Write, Edit, Bash, Glob, Grep
 model: sonnet
 skills:
-  - add-gui-test
-  - add-annotate-grid
-  - add-clip-image
+  - addf-gui-test
+  - addf-annotate-grid
+  - addf-clip-image
 ---
 
 あなたは UI テストの専門エージェントです。GUI アプリケーションの視覚的な動作を検証します。
@@ -50,4 +50,4 @@ skills:
 - 予期しない状態になったらステップ実行に切り替える
 
 ## 知見の蓄積
-テストで得た教訓（権限問題の回避策、安定しないテストへの対処等）があれば、`/add-knowhow` で docs/knowhow/ に記録する。
+テストで得た教訓（権限問題の回避策、安定しないテストへの対処等）があれば、`/addf-knowhow` で docs/knowhow/ に記録する。

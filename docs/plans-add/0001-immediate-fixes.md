@@ -13,7 +13,7 @@
 - テンプレートとして最低限の構造を持つファイルを作成
 
 ### 3. `docs/knowhow/INDEX.md` 初期生成
-- `add-knowhow-index` スキルが参照する INDEX ファイル
+- `addf-knowhow-index` スキルが参照する INDEX ファイル
 - 既存の knowhow 2件（claude-md-at-mention, ignore-file-strategy）を登録
 
 ### 4. `plan.md` の移行・削除

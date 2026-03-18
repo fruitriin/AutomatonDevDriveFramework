@@ -5,7 +5,7 @@
 
 ## 設計
 
-### 1. `add-experience.md` の充実化
+### 1. `addf-experience.md` の充実化
 現状は2行程度の簡素な記述。以下を追加:
 - 明確な手順（Phase 構造）
 - 検証対象の具体例
@@ -22,5 +22,5 @@
 - 存在しない参照先があれば修正
 
 ## 影響範囲
-- `.claude/skills/add-experience.md`
+- `.claude/skills/addf-experience.md`
 - `.claude/skills/` 配下の各スキルファイル（軽微な修正）

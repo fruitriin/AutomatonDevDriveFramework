@@ -1,5 +1,5 @@
 ---
-name: add-clip-image
+name: addf-clip-image
 description: PNG 画像の指定領域を切り出す。annotate-grid で座標確認後、注目領域だけを LLM に渡す際に使う。
 user_invocable: true
 ---
@@ -57,17 +57,17 @@ Exit: 0=成功, 1=エラー
 ## 典型的な連携フロー
 
 ```
-1. /add-gui-test でスクリーンショット撮影 → tmp/capture.png
-2. /add-annotate-grid tmp/capture.png --divide 8
+1. /addf-gui-test でスクリーンショット撮影 → tmp/capture.png
+2. /addf-annotate-grid tmp/capture.png --divide 8
    → tmp/annotated-capture.png で座標系を確認
 3. 注目セルが (3,2) だと判明
-4. /add-clip-image tmp/capture.png --grid-cell 3 2 8
+4. /addf-clip-image tmp/capture.png --grid-cell 3 2 8
    → tmp/clip-capture.png（注目領域のみ、OCR やテキスト検証に最適）
 ```
 
 ## 経験の活用
-- 実行前に `add-clip-image.exp.md` が存在すれば読み、過去の経験を考慮する
-- 実行後、新たな教訓があれば `add-clip-image.exp.md` に追記する
+- 実行前に `addf-clip-image.exp.md` が存在すれば読み、過去の経験を考慮する
+- 実行後、新たな教訓があれば `addf-clip-image.exp.md` に追記する
 
 ## コツ
 - **切り出すのは元画像（annotated じゃない方）から。** グリッド線入りの画像を clip すると線がノイズになる。annotated で座標を確認して、clip は元画像に対して実行する

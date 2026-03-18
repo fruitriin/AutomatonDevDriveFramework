@@ -1,5 +1,5 @@
 ---
-name: add-annotate-grid
+name: addf-annotate-grid
 description: PNG 画像にグリッド線と座標ラベルを描画する。LLM による画像判定の前に座標系を確立するために使う。
 user_invocable: true
 ---
@@ -62,13 +62,13 @@ Exit: 0=成功, 1=エラー
    - 次のステップとして案内する:
      ```
      注目セルが確認できたら:
-       --grid-cell col row N でクリップ: /add-clip-image
-       --rect x y w h でクリップ: /add-clip-image
+       --grid-cell col row N でクリップ: /addf-clip-image
+       --rect x y w h でクリップ: /addf-clip-image
      ```
 
 ## 経験の活用
-- 実行前に `add-annotate-grid.exp.md` が存在すれば読み、過去の経験（最適なオプション選択、よくあるエラー等）を考慮する
-- 実行後、新たな教訓があれば `add-annotate-grid.exp.md` に追記する
+- 実行前に `addf-annotate-grid.exp.md` が存在すれば読み、過去の経験（最適なオプション選択、よくあるエラー等）を考慮する
+- 実行後、新たな教訓があれば `addf-annotate-grid.exp.md` に追記する
 
 ## 注意事項
 - 出力先は `tmp/` を使う（`/tmp/` は使用禁止）

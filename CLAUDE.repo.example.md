@@ -13,7 +13,7 @@ AccrateDevDrive Framework です
 
 # 哲学
 AccrateDevDrive由来のソースコードは .claude 配下に収めてください。
-AccrateDevDrive由来のスキルは add- プレフィックスを持ちます
+AccrateDevDrive由来のスキルは addf- プレフィックスを持ちます
 プロジェクトルート配下にADD由来のファイルをなるべく置かないべきです。
 
 ---
@@ -45,14 +45,14 @@ AccrateDevDrive由来のスキルは add- プレフィックスを持ちます
 
 5. `quality-gate` チーム（TeamCreate）を作成し、以下のエージェントを **並列** で起動する:
 
-   **[add-security-review-agent]** — セキュリティレビュー
+   **[addf-security-review-agent]** — セキュリティレビュー
    - 変更差分に対して脆弱性の有無を検査し、修正案を提示する（実装はしない）
    - 発見した脆弱性を重要度付き（Critical/High/Medium/Low/Info）で報告する
 
-   **[add-ui-test-agent]** — UI テスト（GUI プロジェクトの場合）
+   **[addf-ui-test-agent]** — UI テスト（GUI プロジェクトの場合）
    - 変更に関連するテストシナリオを実行する
 
-   **[add-code-review-agent]** — コードレビュー
+   **[addf-code-review-agent]** — コードレビュー
    - コード品質・可読性・ベストプラクティスの観点からフィードバック
 
 6. **Stage 2 の制御フロー**:

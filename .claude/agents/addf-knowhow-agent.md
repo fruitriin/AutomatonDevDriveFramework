@@ -1,5 +1,5 @@
 ---
-name: add-knowhow-agent
+name: addf-knowhow-agent
 description: Plan ファイルの内容を受け取り、docs/knowhow/ から関連するノウハウをフィルタリングして返す。ブートシーケンスのステップ5で起動される。プロアクティブに使用する。
 tools: Read, Glob, Grep
 model: haiku

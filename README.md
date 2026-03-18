@@ -48,7 +48,7 @@ cd my-project
 計画ファイルの書式は [CONTRIBUTING.md](CONTRIBUTING.md) を参照してください。
 
 ```
-/loop 1h /add-dev-loop
+/loop 1h /addf-dev-loop
 ```
 
 これで AI エージェントが `TODO.md` → `docs/plans/` → 実装 → 品質検証 → コミットのサイクルを自律的に回します。
@@ -85,31 +85,31 @@ ADD フレームワークが提供するスキル（`/コマンド名` で呼び
 
 | スキル | 呼び出し | 説明 |
 |---|---|---|
-| **add-knowhow** | `/add-knowhow <トピック>` | 実装知見を `docs/knowhow/` に記録。既存ノウハウとの重複チェック・統合を自動で行う |
-| **add-knowhow-index** | `/add-knowhow-index [reindex]` | knowhow インデックスを参照、または `reindex` で再構築 |
-| **add-knowhow-filter** | `/add-knowhow-filter <plan-path>` | Plan に関連するノウハウだけをフィルタリングして返す |
+| **addf-knowhow** | `/addf-knowhow <トピック>` | 実装知見を `docs/knowhow/` に記録。既存ノウハウとの重複チェック・統合を自動で行う |
+| **addf-knowhow-index** | `/addf-knowhow-index [reindex]` | knowhow インデックスを参照、または `reindex` で再構築 |
+| **addf-knowhow-filter** | `/addf-knowhow-filter <plan-path>` | Plan に関連するノウハウだけをフィルタリングして返す |
 
 ### 開発ループ
 
 | スキル | 呼び出し | 説明 |
 |---|---|---|
-| **add-dev-loop** | `/loop 1h /add-dev-loop` | TODO.md から未実施タスクを自律選択し、実装・品質検証・コミットまで完遂するループ |
+| **addf-dev-loop** | `/loop 1h /addf-dev-loop` | TODO.md から未実施タスクを自律選択し、実装・品質検証・コミットまで完遂するループ |
 
 ### 経験管理
 
 | スキル | 呼び出し | 説明 |
 |---|---|---|
-| **add-experience** | `/add-experience` | スキル経験ファイル（`.exp.md`）のファイルメンション書式を検証 |
+| **addf-experience** | `/addf-experience` | スキル経験ファイル（`.exp.md`）のファイルメンション書式を検証 |
 
 ### GUI テスト（オプション）
 
-有効化するには `.claude/add-Behavior.toml` で `enable = true` に設定してください。macOS のみ対応。
+有効化するには `.claude/addf-Behavior.toml` で `enable = true` に設定してください。macOS のみ対応。
 
 | スキル | 呼び出し | 説明 |
 |---|---|---|
-| **add-gui-test** | `/add-gui-test <シナリオ>` | `docs/test-scenarios/` のシナリオに基づき GUI テストを実行 |
-| **add-annotate-grid** | `/add-annotate-grid <path>` | PNG 画像にグリッド線と座標ラベルを描画（LLM の座標認識用） |
-| **add-clip-image** | `/add-clip-image <path>` | PNG 画像の指定領域を切り出し（注目領域の抽出用） |
+| **addf-gui-test** | `/addf-gui-test <シナリオ>` | `docs/test-scenarios/` のシナリオに基づき GUI テストを実行 |
+| **addf-annotate-grid** | `/addf-annotate-grid <path>` | PNG 画像にグリッド線と座標ラベルを描画（LLM の座標認識用） |
+| **addf-clip-image** | `/addf-clip-image <path>` | PNG 画像の指定領域を切り出し（注目領域の抽出用） |
 
 ## フレームワークエージェント
 
@@ -117,11 +117,11 @@ ADD フレームワークが提供するスキル（`/コマンド名` で呼び
 
 | エージェント | 用途 | 起動タイミング |
 |---|---|---|
-| **add-knowhow-agent** | Plan に関連するノウハウをフィルタリング | ブートシーケンス（タスク開始時） |
-| **add-code-review-agent** | コード品質・可読性のレビュー | タスク完了時の品質検証 |
-| **add-security-review-agent** | セキュリティ脆弱性の検査・報告 | タスク完了時の品質検証（オプション） |
-| **add-contribution-agent** | フレームワークへのコントリビューション候補の検出 | タスク完了時の品質検証 |
-| **add-ui-test-agent** | スクリーンショット・画像解析による UI 検証 | タスク完了時の品質検証（オプション） |
+| **addf-knowhow-agent** | Plan に関連するノウハウをフィルタリング | ブートシーケンス（タスク開始時） |
+| **addf-code-review-agent** | コード品質・可読性のレビュー | タスク完了時の品質検証 |
+| **addf-security-review-agent** | セキュリティ脆弱性の検査・報告 | タスク完了時の品質検証（オプション） |
+| **addf-contribution-agent** | フレームワークへのコントリビューション候補の検出 | タスク完了時の品質検証 |
+| **addf-ui-test-agent** | スクリーンショット・画像解析による UI 検証 | タスク完了時の品質検証（オプション） |
 
 ## 開発プロセス
 

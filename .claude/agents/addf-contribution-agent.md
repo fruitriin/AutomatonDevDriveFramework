@@ -1,5 +1,5 @@
 ---
-name: add-contribution-agent
+name: addf-contribution-agent
 description: コード変更を分析し、AccrateDevDrive フレームワーク由来のコードとプロジェクト固有のコードを識別する。フレームワークへのアップストリームコントリビューションの候補を検出・提案する。
 tools: Read, Grep, Glob, Bash
 model: sonnet
@@ -67,4 +67,4 @@ model: sonnet
 ```
 
 ## 知見の蓄積
-ADD フレームワークの識別パターンや判断基準の改善点を発見したら、`/add-knowhow` で docs/knowhow/ に記録する。
+ADD フレームワークの識別パターンや判断基準の改善点を発見したら、`/addf-knowhow` で docs/knowhow/ に記録する。

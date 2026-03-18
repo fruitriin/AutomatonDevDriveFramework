@@ -12,18 +12,18 @@
 
 ### 作業中
 3. サブタスク着手時に `- [x]` でチェックしていく。並列可能なタスクはコンテナオーケストレーションを利用する
-4. 実装フェーズの最終サブタスク完了時、実装で得た知見を `/add-knowhow` で記録する（既存 knowhow の更新も含む）
+4. 実装フェーズの最終サブタスク完了時、実装で得た知見を `/addf-knowhow` で記録する（既存 knowhow の更新も含む）
 
 ### エージェント起動時の共通ルール
-- エージェントチーム（TeamCreate）やサブエージェント（Agent）を作成するとき、各エージェントへのプロンプトに **最初に `/add-knowhow-index` を実行する** よう指示を含めること
+- エージェントチーム（TeamCreate）やサブエージェント（Agent）を作成するとき、各エージェントへのプロンプトに **最初に `/addf-knowhow-index` を実行する** よう指示を含めること
 - これにより各エージェントがプロジェクトの知見ベースを把握した状態で作業を開始できる
 
 ### タスク完了時 — 品質検証
 
 4. プロジェクトのビルド・Lint・テストコマンドを実行する
    - **失敗した場合 → 実装に差し戻す**。原因分析 → 修正 → 再実行
-5. `add-code-review-agent` でコードレビューを実施する
-6. `add-contribution-agent` で ADD フレームワークへのコントリビューション候補を検出する
+5. `addf-code-review-agent` でコードレビューを実施する
+6. `addf-contribution-agent` で ADD フレームワークへのコントリビューション候補を検出する
 7. レビュー指摘への対応:
    - **Critical/High**: 必ずこのフェーズ内で修正する（先送り禁止）
    - **Medium**: 原則修正。先送りする場合は独立計画を起こす
@@ -43,6 +43,21 @@
 
 ---
 
-## タスク
+## タスク: 差し込み — add- → addf- プレフィックスリネーム
 
-（現在タスクなし）
+Plan 0005 を中断し、プレフィックスリネームを先に実施する。
+
+- [ ] 1. スキルファイル（8件）のリネーム + frontmatter 更新
+- [ ] 2. エージェントファイル（5件）のリネーム + frontmatter 更新
+- [ ] 3. addf-Behavior.toml → addf-Behavior.toml リネーム
+- [ ] 4. Swift ソース内の参照更新 + 再ビルド
+- [ ] 5. CLAUDE.md 系（CLAUDE.md, CLAUDE.repo.example.md）の参照更新
+- [ ] 6. README.md / README.en.md の参照更新
+- [ ] 7. CONTRIBUTING.md の参照更新
+- [ ] 8. Progress テンプレート / Feedback / knowhow の参照更新
+- [ ] 9. docs/plans-add/ 内の参照更新
+- [ ] 10. docs/guides/ の参照更新
+- [ ] 11. settings.json の参照更新
+- [ ] 12. .claudeignore の参照更新
+- [ ] 13. 品質検証
+- [ ] 14. 完了処理

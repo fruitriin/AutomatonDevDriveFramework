@@ -1,5 +1,5 @@
 ---
-name: add-gui-test
+name: addf-gui-test
 description: GUI テストシナリオを実行する。docs/test-scenarios/ のシナリオファイルを読み、.claude/addToolsSrc/ のツールを使ってテストを実施する。
 user_invocable: true
 ---
@@ -17,7 +17,7 @@ user_invocable: true
 
 ### シナリオ指定の場合
 1. `docs/test-scenarios/` から該当するシナリオファイルを読む
-2. `.claude/add-Behavior.toml` を読み、プラットフォームを確認する:
+2. `.claude/addf-Behavior.toml` を読み、プラットフォームを確認する:
    - `gui-test.enable` が `false` なら「GUI テストは無効です」と報告して終了
    - `gui-test.machine` の値でプラットフォーム固有ツールを選択:
      - `"mac"`: `.claude/addToolsSrc/` の macOS 向け Swift ツールを使用
@@ -34,8 +34,8 @@ user_invocable: true
 7. 結果を報告する（成功/失敗 + 詳細）
 
 ## 経験の活用
-- 実行前に `add-gui-test.exp.md` が存在すれば読み、過去の経験（権限問題の回避策、安定しないテストへの対処等）を考慮する
-- 実行後、新たな教訓があれば `add-gui-test.exp.md` に追記する
+- 実行前に `addf-gui-test.exp.md` が存在すれば読み、過去の経験（権限問題の回避策、安定しないテストへの対処等）を考慮する
+- 実行後、新たな教訓があれば `addf-gui-test.exp.md` に追記する
 
 ## 注意事項
 - GUI テストはディスプレイ環境が必要

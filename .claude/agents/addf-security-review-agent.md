@@ -1,5 +1,5 @@
 ---
-name: add-security-review-agent
+name: addf-security-review-agent
 description: 変更差分に対してセキュリティ脆弱性を検査し、重要度付きで報告する。実装はせず、修正案の提示のみ行う。
 tools: Read, Grep, Glob, Bash
 model: sonnet
@@ -42,4 +42,4 @@ model: sonnet
 **重要**: 実装は行わない。修正案の提示のみ。
 
 ## 知見の蓄積
-プロジェクト固有のセキュリティパターンや注意点を発見したら、`/add-knowhow` で docs/knowhow/ に記録する。
+プロジェクト固有のセキュリティパターンや注意点を発見したら、`/addf-knowhow` で docs/knowhow/ に記録する。

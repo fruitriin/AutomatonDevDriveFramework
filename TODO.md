@@ -13,7 +13,7 @@
 | 2 | 2 | `docs/plans-add/0002-readme-and-skill-docs.md` | 完了 |
 | 3 | 3 | `docs/plans-add/0003-english-docs.md` | 完了 |
 | 4 | 4 | `docs/plans-add/0004-gui-test-cross-platform.md` | 完了 |
-| 5 | 5 | `docs/plans-add/0005-everything-claude-code-research.md` | 未着手 |
+| 5 | 5 | `docs/plans-add/0005-everything-claude-code-research.md` | 実施中 |
 | 6 | 6 | `docs/plans-add/0006-skill-quality.md` | 未着手 |
 
 オーナーリクエスト:

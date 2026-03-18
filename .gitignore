@@ -5,4 +5,4 @@ node_modules
 .claude/skills/*.exp.md
 CLAUDE.local.md
 CLAUDE.repo.md
-.claude/skills/add-gui-test.md
+.claude/skills/addf-gui-test.md

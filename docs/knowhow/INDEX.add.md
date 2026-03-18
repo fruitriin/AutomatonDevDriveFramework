@@ -1,6 +1,6 @@
 # Knowhow Index
 
-> 自動生成。`/add-knowhow-index reindex` で再生成できる。
+> 自動生成。`/addf-knowhow-index reindex` で再生成できる。
 
 | ファイル | 要約 | キーワード |
 |---|---|---|

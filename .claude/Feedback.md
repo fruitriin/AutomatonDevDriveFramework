@@ -10,7 +10,7 @@
 
 ## 問題の記録
 
-- このリポジトリ自体がADDフレームワーク本体のため、`add-contribution-agent` の検出結果（アップストリームコントリビューション候補）はそのまま自身に適用済み。フレームワーク本体での `add-contribution-agent` の有用性は限定的
+- このリポジトリ自体がADDフレームワーク本体のため、`addf-contribution-agent` の検出結果（アップストリームコントリビューション候補）はそのまま自身に適用済み。フレームワーク本体での `addf-contribution-agent` の有用性は限定的
 
 ## 改善アクション
 
@@ -18,4 +18,4 @@
 
 ## 完了済み
 
-- ~~Plan 0004 実施時に `add-Behavier.toml` を `add-Behavior.toml` にリネームする~~ → Plan 0004 で実施済み
+- ~~Plan 0004 実施時に `add-Behavier.toml` を `addf-Behavior.toml` にリネームする~~ → Plan 0004 で実施済み

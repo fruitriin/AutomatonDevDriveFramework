@@ -1,5 +1,5 @@
 ---
-name: add-knowhow-index
+name: addf-knowhow-index
 description: docs/knowhow/INDEX.md を参照して「何を知っているか」を把握する。reindex 引数でインデックスを再構築する。
 context: fork
 user_invocable: true
@@ -37,7 +37,7 @@ user_invocable: true
 ```markdown
 # Knowhow Index
 
-> 自動生成。`/add-knowhow-index reindex` で再生成できる。
+> 自動生成。`/addf-knowhow-index reindex` で再生成できる。
 
 | ファイル | 要約 | キーワード |
 |---|---|---|
@@ -48,10 +48,10 @@ user_invocable: true
 4. ファイルをトピック領域ごとにグルーピングして並べる（領域はプロジェクトに応じて自動判定する）
 
 ## 経験の活用
-- 実行前に `add-knowhow-index.exp.md` が存在すれば読み、過去の経験（グルーピング判断、キーワード選定の改善等）を考慮する
-- 実行後、新たな教訓があれば `add-knowhow-index.exp.md` に追記する
+- 実行前に `addf-knowhow-index.exp.md` が存在すれば読み、過去の経験（グルーピング判断、キーワード選定の改善等）を考慮する
+- 実行後、新たな教訓があれば `addf-knowhow-index.exp.md` に追記する
 
 ## 注意
 
 - キーワードは「検索で引っかかる」ことを重視する。抽象的な単語より具体的な API 名・パターン名を優先する
-- 新しい knowhow が追加されたら `/add-knowhow-index reindex` を実行してインデックスを更新する
+- 新しい knowhow が追加されたら `/addf-knowhow-index reindex` を実行してインデックスを更新する

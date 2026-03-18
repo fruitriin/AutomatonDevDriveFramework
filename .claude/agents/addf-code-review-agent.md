@@ -1,5 +1,5 @@
 ---
-name: add-code-review-agent
+name: addf-code-review-agent
 description: コード変更をレビューし、品質・可読性・ベストプラクティスの観点からフィードバックを返す。コード変更後にプロアクティブに使用する。
 tools: Read, Grep, Glob, Bash
 model: sonnet
@@ -32,4 +32,4 @@ model: sonnet
 具体的な修正例を含めること。
 
 ## 知見の蓄積
-レビューで発見した繰り返しパターン・プロジェクト固有の規約・注意すべきポイントがあれば、`/add-knowhow` で docs/knowhow/ に記録する。
+レビューで発見した繰り返しパターン・プロジェクト固有の規約・注意すべきポイントがあれば、`/addf-knowhow` で docs/knowhow/ に記録する。

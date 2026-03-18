@@ -13,7 +13,7 @@ machine = "mac"  # "mac" | "linux" | "windows"
 ```
 
 ### 2. 抽象インターフェース定義
-スキル（`add-gui-test.md`）がプラットフォームを意識せず使えるよう、以下の操作を抽象化:
+スキル（`addf-gui-test.md`）がプラットフォームを意識せず使えるよう、以下の操作を抽象化:
 - **window-info**: ウィンドウ一覧取得
 - **capture-window**: スクリーンショット撮影
 - **annotate-grid**: グリッド描画（プラットフォーム非依存、既存実装で対応可能）
@@ -28,15 +28,15 @@ machine = "mac"  # "mac" | "linux" | "windows"
 - macOS での Screen Recording 権限の設定方法
 
 ## 影響範囲
-- `.claude/add-Behavior.toml`（旧 `add-Behavier.toml` からリネーム）
-- `.claude/skills/add-gui-test.md`（プラットフォーム判定ロジック追加）
-- `.claude/skills/optional/add-gui-test.md`（同上）
+- `.claude/addf-Behavior.toml`（旧 `add-Behavier.toml` からリネーム）
+- `.claude/skills/addf-gui-test.md`（プラットフォーム判定ロジック追加）
+- `.claude/skills/optional/addf-gui-test.md`（同上）
 - `.claude/addToolsSrc/window-info.swift`, `capture-window.swift`（参照更新）
 - `README.md`, `README.en.md`（ファイル名参照更新）
 - `docs/guides/gui-test-setup.md`（新規作成）
 
 ## 実装完了状況
 - 全項目を実施完了（2026-03-18）
-- `add-Behavier.toml` → `add-Behavior.toml` リネーム＋全参照更新
+- `add-Behavier.toml` → `addf-Behavior.toml` リネーム＋全参照更新
 - `machine` 設定追加、プラットフォーム判定ロジック追加
 - セットアップガイド作成、Swift バイナリ再ビルド成功
