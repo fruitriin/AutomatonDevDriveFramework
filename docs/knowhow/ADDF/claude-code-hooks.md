@@ -163,3 +163,4 @@ worktree 作成時に `.claude` ディレクトリを自動コピー（CLAUDE.md
 - [Claude Code Hooks リファレンス](https://code.claude.com/docs/ja/hooks)
 - [ワークフローをフックで自動化する](https://code.claude.com/docs/ja/hooks-guide)
 - Everything Claude Code の hooks/ ディレクトリ
+- 関連 knowhow: [pretooluse-block-with-rationale.md](pretooluse-block-with-rationale.md) — 根拠提示型ブロックの設計パターン
