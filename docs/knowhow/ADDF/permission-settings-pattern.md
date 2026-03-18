@@ -47,18 +47,18 @@
       "Agent", "Skill", "LSP", "ToolSearch",
       "TaskCreate", "TaskGet", "TaskList", "TaskOutput", "TaskStop", "TaskUpdate",
       "TeamCreate", "TeamDelete", "SendMessage",
-      "Bash(cp:*)", "Bash(mkdir:*)", "Bash(ls:*)", "Bash(tail:*)", "Bash(cd:*)",
-      "Bash(git status:*)", "Bash(git diff:*)", "Bash(git log:*)",
-      "Bash(git add:*)", "Bash(git commit:*)", "Bash(git rm:*)",
-      "Bash(git ls-files:*)", "Bash(git branch:*)", "Bash(git worktree:*)",
-      "Bash(git checkout:*)", "Bash(git show:*)", "Bash(git merge:*)", "Bash(git stash:*)",
-      "Bash(bash .claude/tests/run-all.sh:*)",
-      "Bash(uv run --python 3.11 .claude/addfTools/lint:*)"
+      "Bash(cp *)", "Bash(mkdir *)", "Bash(ls *)", "Bash(tail *)", "Bash(cd *)",
+      "Bash(git status *)", "Bash(git diff *)", "Bash(git log *)",
+      "Bash(git add *)", "Bash(git commit *)", "Bash(git rm *)",
+      "Bash(git ls-files *)", "Bash(git branch *)", "Bash(git worktree *)",
+      "Bash(git checkout *)", "Bash(git show *)", "Bash(git merge *)", "Bash(git stash *)",
+      "Bash(bash .claude/tests/run-all.sh *)",
+      "Bash(uv run --python 3.11 .claude/addfTools/lint *)"
     ],
     "ask": [
-      "Bash(git push:*)",
-      "Bash(git reset --hard:*)",
-      "Bash(git clean:*)"
+      "Bash(git push *)",
+      "Bash(git reset --hard *)",
+      "Bash(git clean *)"
     ]
   }
 }
@@ -69,32 +69,78 @@
 {
   "permissions": {
     "allow": [
-      "Bash(sed:*)",
-      "Bash(find:*)",
-      "Bash(git rev-parse:*)",
-      "Bash(bash .claude/addfTools/build.sh:*)",
-      "Bash(swiftc:*)"
+      "Bash(sed *)",
+      "Bash(find *)",
+      "Bash(git rev-parse *)",
+      "Bash(bash .claude/addfTools/build.sh *)",
+      "Bash(swiftc *)"
     ]
   }
 }
 ```
 
-## 権限フォーマットの技術仕様
+## 権限フォーマットの技術仕様（公式ドキュメント準拠）
+
+> 出典: https://code.claude.com/docs/ja/permissions
+
+### 評価順序
+
+**deny → ask → allow** の順で評価される。最初にマッチしたルールが優先されるため、**deny は常に勝つ**。
+
+### 設定ファイルの優先順位
+
+1. **管理設定**（オーバーライド不可）
+2. **CLI 引数**（一時的なセッションオーバーライド）
+3. **`settings.local.json`**（ローカルプロジェクト設定）
+4. **`settings.json`**（共有プロジェクト設定）
+5. **`~/.claude/settings.json`**（ユーザー設定）
+
+**重要**: いずれかのレベルで deny されたツールは、他のレベルで allow できない。
+
+### ルール構文
+
+| 形式 | 効果 |
+|---|---|
+| `Read` | ツールのすべての使用をマッチ |
+| `Bash(npm run build)` | 正確なコマンドをマッチ |
+| `Bash(npm run test *)` | `npm run test` で始まるコマンドをマッチ |
+| `Bash(git * main)` | 中間ワイルドカード（`git checkout main` 等） |
+
+### ワイルドカードの注意点
+
+- **`:*` は非推奨（レガシー構文）**。`Bash(git status *)` ではなく **`Bash(git status *)`**（スペース+アスタリスク）を使う
+- `*` の前のスペースは単語境界を強制: `Bash(ls *)` は `ls -la` にマッチするが `lsof` にはマッチしない
+- `Bash(ls*)` はスペースなしのため `ls -la` と `lsof` の両方にマッチ
+- シェルオペレータ（`&&` 等）は認識される: `Bash(safe-cmd *)` は `safe-cmd && other-cmd` にマッチしない
 
 ### 組み込みツールの許可
 
-組み込みツールはツール名だけで許可できる:
+ツール名だけで許可:
 ```json
 "allow": ["Read", "Edit", "Write", "Glob", "Grep", "Agent", "Skill", "LSP", "ToolSearch"]
 ```
 
 タスク管理・チーム管理系も同様: `TaskCreate`, `TaskUpdate`, `TeamCreate`, `SendMessage` 等。
 
-### Bash コマンドの許可形式
+### Read/Edit のパスパターン（gitignore 仕様準拠）
 
-`Bash(prefix:*)` でプレフィックスマッチ:
-- `Bash(git status:*)` → `git status`、`git status --short` 等にマッチ
-- `Bash(bash .claude/tests/:*)` → `.claude/tests/` 以下のスクリプト実行にマッチ
+| パターン | 意味 |
+|---|---|
+| `//path` | ファイルシステムルートからの絶対パス |
+| `~/path` | ホームディレクトリからのパス |
+| `/path` | プロジェクトルートからの相対パス |
+| `path` / `./path` | 現在のディレクトリからの相対パス |
+
+`*` は単一ディレクトリ内、`**` は再帰マッチ。
+
+### MCP ツールの許可
+
+- `mcp__server` — サーバーの全ツール
+- `mcp__server__tool` — 特定ツール
+
+### Agent（サブエージェント）の許可
+
+- `Agent(Explore)`, `Agent(Plan)`, `Agent(my-custom-agent)`
 
 ### スキルと権限のスコープ
 
@@ -102,22 +148,26 @@
 
 ### コマンド許可の限定テクニック
 
-`python3` を全面許可すると権限が強すぎる場合、実行スクリプトをディレクトリに集約して限定できる:
+`python3` を全面許可すると権限が強すぎる場合、実行スクリプトをディレクトリに集約して限定:
 ```json
-"Bash(uv run --python 3.11 .claude/addfTools/lint:*)"
+"Bash(uv run --python 3.11 .claude/addfTools/lint *)"
 ```
-これにより `.claude/addfTools/lint-*.py` のみ許可され、任意の python3 実行は防げる。
+
+### PreToolUse フックによる権限拡張
+
+フックは権限システムの**前**に実行される。フック出力でツール呼び出しを承認または拒否できる。
 
 ## 注意点・制約
 
 - `settings.local.json` は `.gitignore` 対象なのでコミットされない
-- 権限は `settings.local.json` > `settings.json` の優先順位で解決される
+- いずれかのレベルで deny されたら、他のレベルで allow できない
 - 新しい権限を追加するときは「これはどのパターンか？」を判断してから配置先を決める
 - `ask` に入れるべき破壊的操作（push, reset --hard, clean）はどちらのプロジェクト種別でも共通
-- セッション中にユーザーが deny した権限は、settings.json の allow で上書きできない可能性がある（要検証）
+- **`:*` 構文は非推奨** — 既存の設定を ` *`（スペース+アスタリスク）に移行すべき
 
 ## 参照
 
+- https://code.claude.com/docs/ja/permissions — 公式ドキュメント
 - `.claude/settings.json` — プロジェクト共有設定
 - `.claude/settings.local.json` — ローカル設定
 - `docs/knowhow/ADDF/upstream-downstream-separation.md` — 分離パターンの全体像
