@@ -27,7 +27,7 @@ machine = "mac"
 ### 2. ツールのビルド
 
 ```bash
-cd .claude/addToolsSrc
+cd .claude/addfTools
 bash build.sh
 ```
 
@@ -40,7 +40,7 @@ bash build.sh
 ### 3. Screen Recording 権限の確認
 
 ```bash
-bash .claude/addToolsSrc/check-screen-recording.sh
+bash .claude/addfTools/check-screen-recording.sh
 ```
 
 権限がない場合は、macOS のシステム設定から付与してください:
@@ -60,16 +60,16 @@ bash .claude/addToolsSrc/check-screen-recording.sh
 
 ```bash
 # ウィンドウ情報を取得
-.claude/addToolsSrc/window-info <プロセス名>
+.claude/addfTools/window-info <プロセス名>
 
 # スクリーンショットを撮影
-.claude/addToolsSrc/capture-window <プロセス名> tmp/capture.png
+.claude/addfTools/capture-window <プロセス名> tmp/capture.png
 
 # グリッドアノテーション
-.claude/addToolsSrc/annotate-grid tmp/capture.png tmp/annotated.png
+.claude/addfTools/annotate-grid tmp/capture.png tmp/annotated.png
 
 # 画像クリップ
-.claude/addToolsSrc/clip-image tmp/annotated.png tmp/clip.png --rect 100,200,300,400
+.claude/addfTools/clip-image tmp/annotated.png tmp/clip.png --rect 100,200,300,400
 ```
 
 ## プラットフォーム対応状況
@@ -81,7 +81,7 @@ bash .claude/addToolsSrc/check-screen-recording.sh
 | Windows | `"windows"` | 未実装 |
 
 Linux/Windows の GUI テストツール実装はコントリビューションを歓迎します。
-`addf-gui-test.md` スキルのプラットフォーム判定ロジックは実装済みのため、プラットフォーム固有ツールを `.claude/addToolsSrc/` に追加するだけで対応できます。
+`addf-gui-test.md` スキルのプラットフォーム判定ロジックは実装済みのため、プラットフォーム固有ツールを `.claude/addfTools/` に追加するだけで対応できます。
 
 ## トラブルシューティング
 

@@ -11,7 +11,7 @@ model: sonnet
 ## ADD フレームワークの識別基準
 
 以下は ADD フレームワーク由来のファイル・コードです:
-- `.claude/` 配下の全ファイル（agents, skills, templates, addToolsSrc 等）
+- `.claude/` 配下の全ファイル（agents, skills, templates, addfTools 等）
 - `CLAUDE.md` のブートシーケンス・並列実装方針・コントリビューションモデル
 - `TODO.md` の構造・運用ルール
 - `CONTRIBUTING.md` の計画駆動モデル
@@ -36,7 +36,7 @@ model: sonnet
 - **スキル・エージェントの改善**: `add-` プレフィックスのスキル/エージェントへのバグ修正・機能改善
 - **ProgressTemplate の改善**: ワークフローの改善
 - **新しい汎用スキル**: プロジェクト非依存の再利用可能なスキル
-- **ツールの改善**: `.claude/addToolsSrc/` のツールへの修正・機能追加
+- **ツールの改善**: `.claude/addfTools/` のツールへの修正・機能追加
 - **ノウハウの汎用化**: プロジェクト固有でない開発ノウハウ
 
 以下はコントリビューション対象外:

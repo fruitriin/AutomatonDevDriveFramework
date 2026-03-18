@@ -44,7 +44,7 @@
       "Bash(git show:*)",
       "Bash(git merge:*)",
       "Bash(git stash:*)",
-      "Bash(bash .claude/addToolsSrc/build.sh:*)",
+      "Bash(bash .claude/addfTools/build.sh:*)",
       "Bash(swiftc:*)"
     ],
     "ask": [

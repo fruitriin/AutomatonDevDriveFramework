@@ -70,7 +70,7 @@ cd my-project
 │   ├── skills/                  # スキル定義
 │   │   └── optional/            # オプショナルスキル
 │   ├── agents/                  # サブエージェント定義
-│   └── addToolsSrc/             # GUI テストツール（macOS/Swift）
+│   └── addfTools/             # GUI テストツール（macOS/Swift）
 ├── docs/
 │   ├── plans/                   # 実装計画ファイル
 │   └── knowhow/                 # 実装知見の蓄積

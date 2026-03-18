@@ -1,6 +1,6 @@
 ---
 name: addf-gui-test
-description: GUI テストシナリオを実行する。docs/test-scenarios/ のシナリオファイルを読み、.claude/addToolsSrc/ のツールを使ってテストを実施する。
+description: GUI テストシナリオを実行する。docs/test-scenarios/ のシナリオファイルを読み、.claude/addfTools/ のツールを使ってテストを実施する。
 user_invocable: true
 ---
 
@@ -20,14 +20,14 @@ user_invocable: true
 2. `.claude/addf-Behavior.toml` を読み、プラットフォームを確認する:
    - `gui-test.enable` が `false` なら「GUI テストは無効です」と報告して終了
    - `gui-test.machine` の値でプラットフォーム固有ツールを選択:
-     - `"mac"`: `.claude/addToolsSrc/` の macOS 向け Swift ツールを使用
+     - `"mac"`: `.claude/addfTools/` の macOS 向け Swift ツールを使用
      - `"linux"` / `"windows"`: 未実装。「このプラットフォームの GUI テストツールは未実装です」と報告して終了
 3. シナリオの「前提条件」を確認する:
-   - テストツールがビルド済みか確認（`.claude/addToolsSrc/window-info` の存在チェック）
-   - 未ビルドなら `.claude/addToolsSrc/build.sh` を実行する
+   - テストツールがビルド済みか確認（`.claude/addfTools/window-info` の存在チェック）
+   - 未ビルドなら `.claude/addfTools/build.sh` を実行する
 4. シナリオの「手順」に従ってテストを実行する:
    - アプリケーションの起動: シナリオに記載された起動コマンドを使用
-   - 各ツールの呼び出し: `.claude/addToolsSrc/` のツールを使用
+   - 各ツールの呼び出し: `.claude/addfTools/` のツールを使用
    - 一時ファイルは `tmp/` に書き出す（`/tmp/` は使用禁止）
 5. 「期待結果」と実際の結果を比較する
 6. 「クリーンアップ」を実行する
@@ -39,6 +39,6 @@ user_invocable: true
 
 ## 注意事項
 - GUI テストはディスプレイ環境が必要
-- Screen Recording / Accessibility 権限が必要な場合がある（`.claude/addToolsSrc/check-screen-recording.sh` で確認可能）
+- Screen Recording / Accessibility 権限が必要な場合がある（`.claude/addfTools/check-screen-recording.sh` で確認可能）
 - 失敗した場合はスクリーンショットを `tmp/` に保存して報告する
 - テスト対象プロセスは必ずクリーンアップで終了させる

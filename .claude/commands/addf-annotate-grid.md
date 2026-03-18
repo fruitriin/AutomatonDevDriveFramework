@@ -40,8 +40,8 @@ Exit: 0=成功, 1=エラー
 
 ### 引数ありの場合
 
-1. `.claude/addToolsSrc/annotate-grid` がビルド済みか確認する
-   - 未ビルドなら `cd .claude/addToolsSrc && ./build.sh` を実行する
+1. `.claude/addfTools/annotate-grid` がビルド済みか確認する
+   - 未ビルドなら `cd .claude/addfTools && ./build.sh` を実行する
 
 2. 入力ファイルが存在するか確認する
    - 存在しない場合、`tmp/` 内の最新の PNG を候補として提示する
@@ -53,7 +53,7 @@ Exit: 0=成功, 1=エラー
 
 4. コマンドを組み立てて実行する:
    ```bash
-   ./.claude/addToolsSrc/annotate-grid <input> <output> <options>
+   ./.claude/addfTools/annotate-grid <input> <output> <options>
    ```
 
 5. 結果を報告する:

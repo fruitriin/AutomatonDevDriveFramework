@@ -1,4 +1,4 @@
-# 計画: テスト基盤整備 & addToolsSrc リネーム
+# 計画: テスト基盤整備 & addfTools リネーム
 
 ## 動機
 フレームワークのスキル・フック・ツールにテストがない。品質を担保するテスト基盤を整備する。
@@ -6,7 +6,7 @@
 
 ## 設計
 
-### 1. `addToolsSrc` → `addfTools` リネーム
+### 1. `addToolsSrc` → `addfTools` リネーム（実施済み）
 - `.claude/addToolsSrc/` → `.claude/addfTools/`
 - build.sh 内のパス更新
 - .claudeignore のバイナリパス更新
@@ -53,6 +53,6 @@
 - clip-image（同上）
 
 ## 影響範囲
-- `.claude/addToolsSrc/` → `.claude/addfTools/`（リネーム）
+- `.claude/addToolsSrc/` → `.claude/addfTools/`（リネーム済み）
 - `.claude/tests/`（新規作成）
 - settings.json, .claudeignore, docs/, README 等の参照更新

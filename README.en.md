@@ -70,7 +70,7 @@ The AI agent will then autonomously cycle through: `TODO.md` → `docs/plans/` �
 │   ├── skills/                  # Skill definitions
 │   │   └── optional/            # Optional skills
 │   ├── agents/                  # Sub-agent definitions
-│   └── addToolsSrc/             # GUI test tools (macOS/Swift)
+│   └── addfTools/             # GUI test tools (macOS/Swift)
 ├── docs/
 │   ├── plans/                   # Implementation plan files
 │   └── knowhow/                 # Accumulated implementation insights
