@@ -81,3 +81,16 @@ GitHub Issue: #3
 ## 見積もり
 
 AI 実装: 15-20 分
+
+## 実装結果
+
+### 完了した項目
+- `.claude/commands/addf-init.md` — init モード（対話的セットアップ）+ check モード（構造検証）
+
+### レビューで修正した項目
+- 手動導入済みプロジェクトの検出（CLAUDE.md 存在 + lock なしのケース）
+- `addf-lock.json` の repository URL 取得元を `git remote get-url origin` に明確化
+- check モードの commit ハッシュ形式チェック追加
+- `docs/knowhow/INDEX.md` のテンプレートを実際の形式に修正
+
+## 状態: 完了（2026-03-20）
