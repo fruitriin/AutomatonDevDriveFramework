@@ -65,3 +65,20 @@ GitHub Issue: #4
 ## 見積もり
 
 AI 実装: 15-25 分
+
+## 実装結果
+
+### 完了した項目
+- `.claude/addf-lock.json` — 初期ロックファイル作成（version, commit, updated_at, repository）
+- `.claude/commands/addf-migrate.md` — 6フェーズのマイグレーションスキル（状態確認→取得→差分算出→確認→適用→完了）
+- `.claude/settings.json` — `git clone`, `git -C`, `mktemp` 権限を追加
+
+### 計画からの差分
+- `repository` フィールドを `addf-lock.json` に追加（計画には未記載だったが、マイグレーション時にリポジトリ URL が必要）
+- Gotchas セクションをスキルに追加（`rm -rf` 権限、CLAUDE.md マージ、URL 変更時の注意）
+
+### 将来の設計課題
+- CLAUDE.md のマージ戦略は実運用で経験を蓄積し、明確化していく必要がある
+- `CLAUDE.repo.md` 側にプロジェクト固有設定を寄せる設計方針を維持すれば、CLAUDE.md マイグレーションは単純化できる
+
+## 状態: 完了（2026-03-20）
