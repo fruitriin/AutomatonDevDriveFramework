@@ -20,7 +20,7 @@
 | 9 | 9 | `docs/plans-add/0009-experience-bootstrap.md` | 未着手 |
 | 10 | 10 | `docs/plans-add/0010-skill-description-and-metrics.md` | 未着手 |
 | 11 | 11 | `docs/plans-add/0011-version-lockfile-and-migration.md` | 完了 |
-| 12 | 12 | `docs/plans-add/0012-codex-support.md` | 未着手 |
+| 12 | 12 | `docs/plans-add/0012-codex-support.md` | 完了 |
 | 13 | 13 | `docs/plans-add/0013-addf-init.md` | 未着手 |
 | 14 | 14 | `docs/plans-add/0014-readme-simplification.md` | 未着手 |
 

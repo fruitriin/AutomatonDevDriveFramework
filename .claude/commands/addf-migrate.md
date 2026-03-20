@@ -63,6 +63,7 @@ ADDF フレームワークを最新版（またはターゲットバージョン
 - `.claude/tests/` — テストスイート
 - `.claude/settings.json` — 共有権限設定（マージ — Phase 5 参照）
 - `CLAUDE.md` — ブートシーケンス（マージ注意）
+- `AGENTS.md` — Codex 向けブートシーケンス（上書き）
 - `CONTRIBUTING.md` — コントリビューションガイド
 - `.claudeignore` — Claude 除外設定
 - `.claude/ADDF-CHANGELOG.md` — 変更履歴

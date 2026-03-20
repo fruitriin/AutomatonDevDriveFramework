@@ -9,60 +9,65 @@ ADDF は現在 Claude Code 固有の機能（Hooks、Skills、Agents、settings.
 Codex ユーザーがそのまま利用することはできない。
 マルチエージェント対応により、ADDF の受益者が増え、他の改善（init、README、knowhow）の複利効果も増大する。
 
-## 前提調査
+## 前提調査（完了）
 
-Codex と Claude Code の機能差分を調査し、対応方針を決定する必要がある。
+### 調査結果: Codex ↔ Claude Code 互換性マッピング
 
-### 調査項目
+| ADDF 機能 | Claude Code | Codex | 互換性 | 対応方針 |
+|---|---|---|---|---|
+| 指示ファイル | `CLAUDE.md`（`@` メンション展開） | `AGENTS.md` + fallback | **高** | `AGENTS.md` 同梱 + fallback 設定案内 |
+| スキル | `.claude/commands/*.md` | `.agents/skills/*/SKILL.md` | **中** | ドキュメントで移植手順を案内 |
+| エージェント | `.claude/agents/*.md` | `[agents]` in config.toml | **低** | 手動実行を案内 |
+| Hooks | settings.json（5イベント） | 限定的（SessionStart, Stop） | **低** | 代替なし、制限事項として明記 |
+| 権限管理 | settings.json permissions | config.toml approval_policy | **低** | Codex 設定テンプレートを提供 |
+| ファイル除外 | `.claudeignore` | sandbox 設定 | **低** | 制限事項として明記 |
+| GUI テスト | addfTools (Swift) | N/A | **なし** | sandbox 環境では不可 |
+| ノウハウ管理 | knowhow/ + スキル | knowhow/ 直接参照 | **高** | Markdown ベース、エージェント非依存 |
+| 品質ゲート | エージェント並列起動 | 手動実行 | **低** | 手動実行手順を案内 |
+| 計画駆動開発 | Plan → TODO → Progress | 同左 | **高** | Markdown ベース、エージェント非依存 |
 
-1. **Codex の設定ファイル形式** — Claude Code の `CLAUDE.md` に相当するものはあるか
-2. **Codex のエージェント/スキル機構** — Skills、Agents に相当する拡張ポイントはあるか
-3. **Codex の Hooks 機構** — SessionStart、PreToolUse 等に相当するものはあるか
-4. **Codex のファイルアクセス制限** — `.claudeignore` に相当するものはあるか
-5. **Codex の権限管理** — `settings.json` の allow/deny に相当するものはあるか
+### 互換戦略の調査結果
 
-### ADDF 機能の Codex 互換性マッピング
+1. **project_doc_fallback_filenames**: Codex の `~/.codex/config.toml` で `CLAUDE.md` をフォールバックに設定可能
+2. **symlink**: `AGENTS.md` → `CLAUDE.md` のシンボリックリンクも可能だが、ツール固有のカスタマイズができなくなる
+3. **ADDF の採用方針**: 別ファイルとして `AGENTS.md`（簡潔版）と `CLAUDE.md`（フル版）を提供
 
-| ADDF 機能 | Claude Code | Codex | 対応方針 |
-|---|---|---|---|
-| ブートシーケンス | CLAUDE.md `@` メンション | 調査必要 | |
-| スキル | `.claude/commands/` | 調査必要 | |
-| エージェント | `.claude/agents/` | 調査必要 | |
-| Hooks | `.claude/settings.json` hooks | 調査必要 | |
-| 権限管理 | `.claude/settings.json` permissions | 調査必要 | |
-| GUI テスト | addfTools (Swift) | 対象外 | Codex は CLI/sandbox なので不要 |
-| ノウハウ管理 | knowhow/ + スキル | 調査必要 | |
-| 品質ゲート | エージェント並列起動 | 調査必要 | |
+## 採用した設計方針: B案（ドキュメント対応）+ C案要素
 
-## 設計方針（調査後に確定）
+### 理由
 
-### A案: 互換レイヤー
+- ADDF のコアワークフロー（計画駆動、ノウハウ蓄積、進捗管理）は Markdown ベースで**エージェント非依存**
+- Claude Code 固有機能（Hooks、Skills 自動発見、Agents 並列起動）の完全互換は保守コストが高すぎる
+- Codex ユーザーは ADDF のコアワークフローだけでも十分価値がある
+- `addf-init`（Phase 13）で Codex 向け初期設定を生成する拡張点を残す
 
-ADDF のコア概念（ブートシーケンス、計画駆動、ノウハウ蓄積）をエージェント非依存の形で定義し、
-Claude Code / Codex それぞれのアダプターを提供する。
+### 実装内容
 
-### B案: ドキュメント対応
-
-Codex での手動セットアップ手順をドキュメントとして提供。
-ADDF のコア（CLAUDE.md、計画ファイル、knowhow）は Markdown ベースなので、
-Codex の設定ファイルに手動で転記する手順を案内する。
-
-### C案: デュアル生成
-
-`addf-init`（Phase 13）でターゲットエージェントを選択させ、
-Claude Code 用と Codex 用の設定ファイルをそれぞれ生成する。
+1. **`AGENTS.md`**: リポジトリルートに配置。Codex 向けの簡潔なブートシーケンスと機能互換性の案内
+2. **`docs/guides/codex-setup.md`**: 詳細なセットアップガイド（fallback 設定、スキル移植手順、制限事項）
+3. **Phase 13（addf-init）への入力**: Codex ユーザー向けの初期設定生成オプション
 
 ## 影響範囲
 
-調査結果次第。最小で:
-- ドキュメント追加（Codex 向けセットアップガイド）
-- `addf-init` への Codex オプション追加
-
-最大で:
-- エージェント抽象レイヤーの導入
-- Codex 用設定ファイルテンプレート群の追加
+- `AGENTS.md`（新規）
+- `docs/guides/codex-setup.md`（新規）
+- `docs/plans-add/0013-addf-init.md`（Codex オプション追記）
 
 ## 見積もり
 
-調査: 10-15 分
-実装: 調査結果次第（20-60 分）
+調査: 10 分（完了）
+実装: 15 分
+
+## 実装結果
+
+### 完了した項目
+- `AGENTS.md` — Codex 向けブートシーケンス + 機能互換性マッピング
+- `docs/guides/codex-setup.md` — 詳細セットアップガイド（fallback 設定、スキル移植、デュアル運用）
+- 互換性マッピング表の確定
+
+### 主な設計判断
+- ADDF のコアは Markdown ベースでエージェント非依存 → Codex でもそのまま利用可能
+- Claude Code 固有機能の完全互換は追求しない（保守コスト vs 価値）
+- `AGENTS.md` と `CLAUDE.md` は別ファイルとして管理（ツール固有のカスタマイズ余地を残す）
+
+## 状態: 完了（2026-03-20）

@@ -37,13 +37,17 @@ GitHub Issue: #3
    - プロジェクト種別（ADDF 利用プロジェクト / ADDF 開発プロジェクト）
    - ビルド・Lint・テストコマンド
    - コミットログ規約
-   - ターゲットエージェント（Claude Code / Codex）（Phase 12 の結果次第）
-3. `CLAUDE.local.example.md` → `CLAUDE.local.md` のコピー
-4. `.claude/addf-lock.json` の初期生成（Phase 11）
-5. `TODO.md` の初期化（テンプレートから）
-6. `docs/plans/` ディレクトリの作成
-7. `docs/knowhow/INDEX.md` の初期化
-8. 完了メッセージと次のステップの案内
+   - ターゲットエージェント（Claude Code / Codex / 両方）
+3. ターゲットが Codex または両方の場合:
+   - `~/.codex/config.toml` に `project_doc_fallback_filenames = ["CLAUDE.md"]` の設定を案内
+   - `AGENTS.md` がリポジトリに存在することを確認（ADDF 同梱済み）
+   - Codex 向け推奨設定（`approval_policy`, `sandbox_mode`）を案内
+4. `CLAUDE.local.example.md` → `CLAUDE.local.md` のコピー
+5. `.claude/addf-lock.json` の初期生成（Phase 11）
+6. `TODO.md` の初期化（テンプレートから）
+7. `docs/plans/` ディレクトリの作成
+8. `docs/knowhow/INDEX.md` の初期化
+9. 完了メッセージと次のステップの案内
 
 #### check モード（構造検証）
 
