@@ -1,16 +1,11 @@
 # 依存・ビルド成果物
 node_modules
 
-# スキル経験ファイル（ローカル蓄積、共有しない）
+# --- ADDF Framework (do not remove) ---
 .claude/commands/*.exp.md
-
-# フック状態ファイル（セッションローカル）
 .claude/.turn-count
-
-# スキル使用ログ（ローカル計測、共有しない）
 .claude/logs/
-
-# ローカル設定ファイル（個人環境固有）
 CLAUDE.local.md
 CLAUDE.repo.md
 .claude/skills/addf-gui-test.md
+# --- /ADDF Framework ---

@@ -1,42 +1,56 @@
 # AutomatonDevDrive Framework
 
-> ADDF is one of Agentic Driven Development Framework
+> ADDF — Agentic Driven Development Framework
 
 [English README](README.en.md)
 
-自動人形（Automaton）が開発を自律駆動するフレームワークです。
-プロジェクトをクローンし、初期化して、計画書を与えれば、AIエージェントが自律的にタスクを選び、実装し、品質検証まで完遂します。
+AI コーディングエージェントのためのリポジトリ構成フレームワークです。
+プロジェクトに ADDF を導入すると、計画駆動の開発プロセス・ノウハウ蓄積・品質ゲートが自動的に機能し、AI エージェントが自律的にタスクを選び、実装し、品質検証まで完遂します。
+
+**ADDF はリポジトリ構成フレームワークであり、アプリケーションフレームワークを含みません。** React、Rails、Flutter、Unity など、どんな技術スタックのプロジェクトにも導入できます。
+
+## 対応エージェント
+
+| エージェント | サポート | 備考 |
+|---|---|---|
+| **Claude Code** (Anthropic) | ファーストパーティ | 全機能対応。Hooks・Skills・Agents・並列実行を活用 |
+| **Codex** (OpenAI) | 部分対応 | 計画駆動・ノウハウ蓄積は利用可。Hooks・自動品質ゲートは制限あり → [詳細](docs/guides/codex-setup.md) |
+| **その他** (Open Code 等) | 基本対応 | CLAUDE.md / AGENTS.md を読めるエージェントなら計画駆動ワークフローは動作 |
 
 ## 特徴
 
+- **計画駆動** — コードではなく計画をレビュー。AI が実装品質を担保する
 - **ノウハウ蓄積** — 実装で得た知見を `docs/knowhow/` に記録し、以降のタスクで自動参照
 - **自己推進** — `/addf-dev` で1タスク完遂、`/loop 1h /addf-dev` で自律繰り返し
-- **スキルと経験の分離** — スキル定義（`.md`）と経験蓄積（`.exp.md`）を分離し、経験はローカルに蓄積
 - **品質ゲート** — コードレビュー・セキュリティレビュー・コントリビューション検出を自動実行
-- **GUI テスト**（オプション） — macOS 向けスクリーンショット撮影・画像解析によるUIの視覚的検証
+- **スキルと経験の分離** — スキル定義（`.md`）と経験蓄積（`.exp.md`）を分離し、経験はローカルに蓄積
 
 ## クイックスタート
 
-### 1. テンプレートからリポジトリを作成
+### 1. ADDF を導入する
 
-GitHub で **[Use this template](https://github.com/fruitriin/AutomatonDevDriveFramework/generate)** をクリックし、新しいリポジトリを作成します。
+**新規プロジェクト** — GitHub Template から:
 
 ```bash
+# Use this template → リポジトリ作成 → クローン
 git clone https://github.com/your-org/my-project.git
 cd my-project
 ```
-
-### 2. 初期化
-
 ```
 /addf-init
 ```
 
-対話形式でプロジェクト名・種別・ビルドコマンド等を設定し、必要なファイルを自動生成します。
+**既存プロジェクト** — Claude Code で以下を実行:
 
-### 3. 計画を作成して開発を開始
+```
+https://raw.githubusercontent.com/fruitriin/AutomatonDevDriveFramework/main/.claude/commands/addf-init.md
+を取得し、このプロジェクトに ADDF フレームワークを導入してください。
+ADDF リポジトリ: https://github.com/fruitriin/AutomatonDevDriveFramework
+```
 
-計画は簡素なメモから作成できます:
+既存の CLAUDE.md・AGENTS.md・設定ファイルは自動で退避・マージされます。
+
+### 2. 計画を作成して開発を開始
 
 ```markdown
 - ログイン機能を追加

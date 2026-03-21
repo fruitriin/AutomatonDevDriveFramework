@@ -1,55 +1,69 @@
 # AutomatonDevDrive Framework
 
-> ADDF is one of Agentic Driven Development Framework
+> ADDF — Agentic Driven Development Framework
 
 [日本語版 README はこちら](README.md)
 
-A framework where Automatons — AI agents — autonomously drive your development.
-Clone the project, initialize it, provide a plan, and the AI agent will autonomously select tasks, implement them, and run quality verification end to end.
+A repository scaffolding framework for AI coding agents.
+Install ADDF into your project and it provides plan-driven development, knowhow accumulation, and quality gates — AI agents autonomously select tasks, implement them, and run quality verification end to end.
+
+**ADDF is a repository scaffolding framework — it contains no application framework.** It works with any tech stack: React, Rails, Flutter, Unity, and beyond.
+
+## Supported Agents
+
+| Agent | Support | Notes |
+|---|---|---|
+| **Claude Code** (Anthropic) | First-party | Full feature support. Hooks, Skills, Agents, parallel execution |
+| **Codex** (OpenAI) | Partial | Plan-driven workflow & knowhow work. Hooks & auto quality gates limited → [Details](docs/guides/codex-setup.md) |
+| **Others** (Open Code, etc.) | Basic | Plan-driven workflow works if the agent reads CLAUDE.md / AGENTS.md |
 
 ## Features
 
-- **Knowhow Accumulation** — Records implementation insights in `docs/knowhow/` and automatically references them in subsequent tasks
-- **Self-Driving** — `/addf-dev` completes one task; `/loop 1h /addf-dev` for continuous autonomous execution
-- **Separation of Skills and Experience** — Skill definitions (`.md`) and experience accumulation (`.exp.md`) are separated; experience is stored locally
+- **Plan-Driven** — Review plans, not code. AI ensures implementation quality
+- **Knowhow Accumulation** — Records implementation insights in `docs/knowhow/` and auto-references them
+- **Self-Driving** — `/addf-dev` completes one task; `/loop 1h /addf-dev` for continuous execution
 - **Quality Gate** — Automatically runs code review, security review, and contribution detection
-- **GUI Testing** (optional) — Visual UI verification via screenshots and image analysis on macOS
+- **Separation of Skills and Experience** — Skill definitions (`.md`) and experience (`.exp.md`) are separated
 
 ## Quick Start
 
-### 1. Create a Repository from the Template
+### 1. Install ADDF
 
-Click **[Use this template](https://github.com/fruitriin/AutomatonDevDriveFramework/generate)** on GitHub to create a new repository.
+**New project** — from GitHub Template:
 
 ```bash
+# Use this template → create repo → clone
 git clone https://github.com/your-org/my-project.git
 cd my-project
 ```
-
-### 2. Initialize
-
 ```
 /addf-init
 ```
 
-Interactively sets up project name, type, build commands, and auto-generates the necessary files.
+**Existing project** — run this in Claude Code:
 
-### 3. Create Plans and Start Development
+```
+Fetch https://raw.githubusercontent.com/fruitriin/AutomatonDevDriveFramework/main/.claude/commands/addf-init.md
+and install the ADDF framework into this project.
+ADDF repository: https://github.com/fruitriin/AutomatonDevDriveFramework
+```
 
-Plans can be created from rough notes:
+Existing CLAUDE.md, AGENTS.md, and config files are automatically migrated and merged.
+
+### 2. Create Plans and Start Development
 
 ```markdown
 - Add login feature
 - Increase test coverage
 ```
 
-Just hand it to Claude and the AI will break it into formal plan files in `docs/plans/` and `TODO.md`.
+Just hand it to Claude and the AI will break it into plan files in `docs/plans/` and `TODO.md`.
 
 ```
 /addf-dev
 ```
 
-Picks one task, implements it, runs quality verification, and commits. For continuous autonomous execution:
+Picks one task, implements it, runs quality verification, and commits. For continuous execution:
 
 ```
 /loop 1h /addf-dev
