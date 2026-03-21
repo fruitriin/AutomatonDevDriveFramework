@@ -35,3 +35,18 @@
 
 ## 見積もり
 AI 実装: 5-10 分
+
+## 実装結果
+
+### 完了した項目
+- `addf-knowhow-index.exp.md` — INDEX 管理の経験（グルーピング、キーワード選定、ADDF/ダウンストリーム区別）
+- `addf-gui-test.exp.md` — GUI テストの経験（権限問題、Behavior.toml 設定、macOS 制約）
+- `addf-dev-loop.exp.md` — 開発ループの経験（タスク選択判断、完了処理の注意点、TODO 参照先の違い）
+- `.claude/templates/ExperienceTemplate.md` — 経験ファイルの共通テンプレート
+
+### 注意点
+- `*.exp.md` は `.gitignore` 対象のため、ダウンストリームへは配布されない
+- 初期経験はADDF本体開発で蓄積された教訓を元に作成
+- テンプレート（ExperienceTemplate.md）はコミット対象として配布される
+
+## 状態: 完了（2026-03-21）
