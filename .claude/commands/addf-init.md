@@ -13,8 +13,10 @@ user_invocable: true
 
 このスキルが WebFetch 経由で取得された場合、または tmp ディレクトリ内のクローンから読まれている場合:
 
-1. **ADDF リポジトリを一時ディレクトリにクローンする**（まだクローンしていなければ）:
+1. **URL の検証とクローン**:
    - ユーザーが提供した URL、またはデフォルト `https://github.com/fruitriin/AutomatonDevDriveFramework.git`
+   - `https://` スキームのみ許可。`file://`, `ssh://`, `git://` は拒否して案内する
+   - URL をユーザーに表示して確認: 「以下の URL からクローンします: <url>。続行しますか？」
    ```bash
    mktemp -d
    git clone --depth 1 <url> <tmp>/addf-source
@@ -43,7 +45,8 @@ user_invocable: true
 
 1. 既に ADDF 導入済みか判定する:
    - `.claude/addf-lock.json` が存在する → 「ADDF は導入済みです。`/addf-init check` で構造を検証できます」と案内して終了
-   - `CLAUDE.md` または `.claude/` が存在するが `addf-lock.json` がない → 「ADDF が手動導入済みまたは既存プロジェクトの可能性があります。続行すると既存ファイルを保護しつつ ADDF を導入します。続行しますか？」と確認を求める
+   - `.claude/commands/addf-*.md` が存在するが `addf-lock.json` がない → **Template 経由の新規プロジェクト**（ADDF ファイルは同梱済み、ロックファイルのみ未生成）。Phase 2 に進む
+   - `CLAUDE.md` または `.claude/` が存在するが ADDF ファイルがない → **既存プロジェクト導入モード**。「既存プロジェクトに ADDF を導入します。続行しますか？」と確認を求める
    - どちらも存在しない → 初期セットアップを開始
 
 ### Phase 2: セットアップ情報の収集

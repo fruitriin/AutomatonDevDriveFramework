@@ -28,7 +28,10 @@ ADDF フレームワークを最新版（またはターゲットバージョン
 1. `.claude/addf-lock.json` を読み、現在の `commit` と `version` を記録する
 2. `git status` でワーキングツリーがクリーンか確認する
    - クリーンでなければ: 「未コミットの変更があります。コミットまたはスタッシュしてから再実行してください」と案内して終了
-3. ロックファイルの `repository` フィールドから ADDF リポジトリの URL を取得する
+3. ロックファイルの `repository` フィールドから ADDF リポジトリの URL を取得し検証する:
+   - `https://` スキームであることを確認（`file://`, `ssh://`, `git://` は拒否）
+   - デフォルト URL（`https://github.com/fruitriin/AutomatonDevDriveFramework.git`）と異なる場合は警告を表示
+   - URL をユーザーに表示して確認
 
 ### Phase 2: 最新版の取得
 
@@ -68,6 +71,7 @@ ADDF フレームワークを最新版（またはターゲットバージョン
 - `.claudeignore` — Claude 除外設定
 - `.claude/ADDF-CHANGELOG.md` — 変更履歴
 - `.claude/ADDF-Release.addf.md` — ADDF リリース手順
+- `docs/guides/` — ADDF ガイドドキュメント
 - `docs/knowhow/ADDF/` — ADDF ノウハウ
 
 **マイグレーション対象外（スキップ）:**
@@ -140,6 +144,11 @@ ADDF フレームワークを最新版（またはターゲットバージョン
 12. **スキル・エージェント・テンプレートの適用**:
     - ADDF 側を優先して上書きする
     - `addf-` プレフィックスのファイルのみ対象（プロジェクト固有のスキルは保護）
+    - スキルのリネームが含まれる場合（旧名が削除され新名が追加される）、対応する `.exp.md` が存在すれば手動リネームを案内する:
+      ```
+      ! .claude/commands/addf-dev-loop.exp.md
+        → .claude/commands/addf-dev.exp.md にリネームを推奨（経験を引き継ぐため）
+      ```
 
 13. **CLAUDE.md のマージ**:
     - ADDF テンプレート部分（ブートシーケンス等）を更新する

@@ -14,7 +14,7 @@ ADDF が提供するスキル（`/コマンド名` で呼び出し）:
 
 | スキル | 呼び出し | 説明 |
 |---|---|---|
-| **addf-dev** | `/loop 1h /addf-dev` | TODO.md から未実施タスクを自律選択し、実装・品質検証・コミットまで完遂するループ |
+| **addf-dev** | `/addf-dev` | TODO.md から未実施タスクを自律選択し、実装・品質検証・コミットまで完遂。繰り返すには `/loop 1h /addf-dev` |
 
 ## プロジェクト管理
 
@@ -23,6 +23,7 @@ ADDF が提供するスキル（`/コマンド名` で呼び出し）:
 | **addf-init** | `/addf-init [check]` | プロジェクトの初期セットアップ（引数なし）または構造検証（`check`） |
 | **addf-migrate** | `/addf-migrate [target]` | ADDF フレームワークを最新版にアップグレード |
 | **addf-lint** | `/addf-lint` | フレームワーク整合性チェック（JSON構文・権限・frontmatter・INDEX等） |
+| **addf-release** | `/addf-release [minor]` | リリース（チェンジログ・バージョン採番・publish） |
 | **addf-permission-audit** | `/addf-permission-audit` | 権限要求の分析・分類・settings ファイルへの追加提案 |
 
 ## 経験管理
