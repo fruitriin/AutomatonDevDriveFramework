@@ -59,7 +59,7 @@
 | `docs/knowhow/` + `addf-knowhow` | 1. Library & API Reference | **ライブラリ知識がそのままノウハウとして実装されている**。Anthropic の「Library & API Reference」スキルが SDK の使い方を教えるのと同じ役割を、ADDF はプロジェクト固有の知見ファイル群で果たす |
 | `addf-gui-test` + `addf-ui-test-agent` | 2. Product Verification | `.claude/addfTools/` にスクリプト群を同梱する構成は記事の推奨パターンそのもの |
 | `addf-knowhow-filter` | 3. Data Fetching & Analysis | knowhow を Plan に応じてフィルタリングして返す — データフェッチの内部版 |
-| `addf-dev-loop` | 4. Business Process | TODO.md → Plan 選択 → 実装の反復ワークフロー自動化 |
+| `addf-dev` | 4. Business Process | TODO.md → Plan 選択 → 実装の反復ワークフロー自動化 |
 | `.claude/templates/` + Progress.md | 5. Code Scaffolding & Templates | ProgressTemplate からタスク進捗ファイルを生成するパターン |
 | `addf-code-review-agent` + `addf-security-review-agent` | 6. Code Quality & Review | 品質ゲートの Stage 2 で並列実行するレビューエージェント群 |
 | `addf-contribution-agent` | 7. CI/CD & Deployment | アップストリームへのコントリビューション検出 — デプロイではないが「コード配布」の自動化 |
@@ -81,7 +81,7 @@
 - **knowhow = Library Reference の汎用化**: Anthropic は個別ライブラリごとにスキルを作るが、ADDF は `docs/knowhow/` という統一的なナレッジベースと `addf-knowhow-index` によるインデックスで、任意のトピックを動的に参照する仕組みを持つ。スキル数の爆発を防ぐアプローチ
 - **エージェント分離**: 記事はスキル（commands）中心だが、ADDF はエージェント（`.claude/agents/`）をスキルと分離して定義。レビュー・テスト等の自律的なタスクはエージェントに委ね、ユーザー対話型の手順はスキルに残す
 - **アップストリーム/ダウンストリーム分離**: `addf-` プレフィックスと `.addf.md` サフィックスで、フレームワーク由来とプロジェクト固有を区別。記事のマーケットプレイス配布とは異なるが、同じ「共有可能性」の課題を解決している
-- **自己推進ループ**: `/loop` + `/addf-dev-loop` による TODO.md 駆動の自律開発は、記事の `babysit-pr` や `standup-post` の発展形。単一タスク自動化を超えて、タスクバックログ全体の自動推進を実現
+- **自己推進ループ**: `/loop` + `/addf-dev` による TODO.md 駆動の自律開発は、記事の `babysit-pr` や `standup-post` の発展形。単一タスク自動化を超えて、タスクバックログ全体の自動推進を実現
 
 ### 改善の余地
 

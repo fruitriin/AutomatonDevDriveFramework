@@ -84,7 +84,7 @@ description: 実装知見を docs/knowhow/ に記録する
 |---|---|---|
 | `addf-knowhow` | 高 | Markdown 操作のみ、エージェント非依存 |
 | `addf-knowhow-index` | 高 | 同上 |
-| `addf-dev-loop` | 高 | 計画駆動の中核、Markdown ベース |
+| `addf-dev` | 高 | 計画駆動の中核、Markdown ベース |
 | `addf-lint` | 中 | Python スクリプト依存あり |
 | `addf-migrate` | 中 | git 操作中心、移植可能 |
 | `addf-gui-test` | 不可 | macOS Swift ツール依存 |

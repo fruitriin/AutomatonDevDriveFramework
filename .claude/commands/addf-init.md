@@ -125,7 +125,7 @@ user_invocable: true
     次のステップ:
     1. CLAUDE.repo.md を確認・カスタマイズしてください
     2. docs/plans/ に計画ファイルを作成してください
-    3. `/loop 1h /addf-dev-loop` で自律開発を開始できます
+    3. `/loop 1h /addf-dev` で自律開発を開始できます
     ```
 
 ---

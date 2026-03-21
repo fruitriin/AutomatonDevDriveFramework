@@ -1,10 +1,10 @@
-# テスト: addf-dev-loop
+# テスト: addf-dev
 
 ## テスト 1: スキルのロード確認
 
 ### 入力
 ```
-/addf-dev-loop
+/addf-dev
 ```
 
 ### 期待結果

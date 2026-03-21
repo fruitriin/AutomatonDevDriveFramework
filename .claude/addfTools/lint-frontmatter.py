@@ -8,6 +8,8 @@ import sys, yaml, glob
 
 errors = []
 for f in sorted(glob.glob('.claude/commands/addf-*.md')):
+    if f.endswith('.exp.md'):
+        continue  # 経験ファイルはスキル定義ではないためスキップ
     with open(f) as fh:
         content = fh.read()
     if not content.startswith('---'):
