@@ -58,3 +58,22 @@ README に残す内容（必須情報のみ）:
 ## 見積もり
 
 AI 実装: 15-20 分
+
+## 実装結果
+
+### 完了した項目
+- `README.md` — 174行→65行にスリム化（クイックスタート + ドキュメントリンク集）
+- `README.en.md` — 163行→65行にスリム化（同構造）
+- `docs/guides/setup.md` — 詳細セットアップ（手動セットアップ、設定役割、ディレクトリ構成）
+- `docs/guides/skills.md` — スキル一覧（addf-init, addf-migrate 等の新スキルも含む）
+- `docs/guides/agents.md` — エージェント一覧と品質ゲート
+- `docs/guides/development-process.md` — 開発プロセスの詳細
+- `docs/guides/migration.md` — バージョンアップ手順
+- 既存の `docs/guides/codex-setup.md` と `docs/guides/gui-test-setup.md` はそのまま活用
+
+### 設計判断
+- README のクイックスタートは `/addf-init` を中核に据えた（手動ファイル差し替え → 自動初期化）
+- clone URL を `your-org` → 実際のリポジトリ URL に更新
+- ディレクトリ構成の `.claude/skills/` を `.claude/commands/` に修正（実態に合わせた）
+
+## 状態: 完了（2026-03-21）

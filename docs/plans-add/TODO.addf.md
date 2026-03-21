@@ -22,7 +22,7 @@
 | 11 | 11 | `docs/plans-add/0011-version-lockfile-and-migration.md` | 完了 |
 | 12 | 12 | `docs/plans-add/0012-codex-support.md` | 完了 |
 | 13 | 13 | `docs/plans-add/0013-addf-init.md` | 完了 |
-| 14 | 14 | `docs/plans-add/0014-readme-simplification.md` | 未着手 |
+| 14 | 14 | `docs/plans-add/0014-readme-simplification.md` | 完了 |
 
 オーナーリクエスト:
 タスクが無くなったら以下に取り組んでください

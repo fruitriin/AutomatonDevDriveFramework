@@ -5,7 +5,7 @@
 [日本語版 README はこちら](README.md)
 
 A framework where Automatons — AI agents — autonomously drive your development.
-Clone the project, replace a few files, provide a plan (`docs/plans/`), and the AI agent will autonomously select tasks, implement them, and run quality verification end to end.
+Clone the project, initialize it, provide a plan, and the AI agent will autonomously select tasks, implement them, and run quality verification end to end.
 
 ## Features
 
@@ -15,138 +15,51 @@ Clone the project, replace a few files, provide a plan (`docs/plans/`), and the 
 - **Quality Gate** — Automatically runs code review, security review, and contribution detection
 - **GUI Testing** (optional) — Visual UI verification via screenshots and image analysis on macOS
 
-## Setup
+## Quick Start
 
-### 1. Clone the Repository
+### 1. Clone
 
 ```bash
-git clone https://github.com/your-org/AutomatonDevDriveFramework.git my-project
+git clone https://github.com/fruitriin/AutomatonDevDriveFramework.git my-project
 cd my-project
 ```
 
-### 2. Replace Project-Specific Files
+### 2. Initialize
 
-| File | Action | Description |
-|---|---|---|
-| `README.md` | Replace | Rewrite with your project's own description |
-| `CLAUDE.repo.md` | Create | Create based on `CLAUDE.repo.example.md` (`.gitignore` target, local only) |
-| `CLAUDE.local.md` | Create (optional) | Create based on `CLAUDE.local.example.md` for personal developer settings |
-| `CONTRIBUTING.md` | Replace (optional) | Customize for your project as needed |
-
-### 3. Configuration Roles
-
-| File | Loading Method | Committed |
-|---|---|---|
-| `CLAUDE.repo.md` | Expanded via `@` mention in CLAUDE.md | No (`.gitignore` target) |
-| `CLAUDE.local.md` | Auto-loaded by Claude Code | No (`.gitignore` target) |
-| `.gitignore` | Git standard | Yes |
-| `.claudeignore` | Claude Code standard | Yes |
-
-Even files in `.gitignore` can be accessed by Claude Code via direct path specification. Files that should be "not tracked by git but visible to Claude" (such as `*.exp.md`) should only be listed in `.gitignore`.
-
-### 4. Create Plans and Start Development
-
-Plans can be created from rough notes or bullet points. For example:
-
-```markdown
-<!-- jot this down in plan.md... -->
-- README skills section is empty
-- No English documentation
-- GUI tests are macOS-only
+```
+/addf-init
 ```
 
-Just hand it to Claude (type `plan.md`, paste the bullets into chat, etc.) and the AI will automatically review the project, break it into formal plan files, and populate `docs/plans/` and `TODO.md`. ADDF itself was bootstrapped this way.
+Interactively sets up project name, type, build commands, and auto-generates the necessary files.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for the plan file format.
+### 3. Create Plans and Start Development
+
+Plans can be created from rough notes:
+
+```markdown
+- Add login feature
+- Increase test coverage
+```
+
+Just hand it to Claude and the AI will break it into formal plan files in `docs/plans/` and `TODO.md`.
 
 ```
 /loop 1h /addf-dev-loop
 ```
 
-The AI agent will then autonomously cycle through: `TODO.md` → `docs/plans/` → Implementation → Quality verification → Commit.
+The AI agent will then autonomously cycle through the development loop.
 
-## Directory Structure
+## Documentation
 
-```
-.
-├── CLAUDE.md                    # Boot sequence & development process definition
-├── CLAUDE.repo.example.md       # Template for CLAUDE.repo.md
-├── CLAUDE.local.example.md      # Template for CLAUDE.local.md
-├── TODO.md                      # Task backlog
-├── CONTRIBUTING.md              # Contribution guide
-├── .claude/
-│   ├── Progress.md              # Current task progress
-│   ├── Feedback.md              # Issue tracking & improvement actions
-│   ├── Progresses/              # Completed task archives
-│   ├── templates/               # Template files
-│   ├── skills/                  # Skill definitions
-│   │   └── optional/            # Optional skills
-│   ├── agents/                  # Sub-agent definitions
-│   └── addfTools/             # GUI test tools (macOS/Swift)
-├── docs/
-│   ├── plans/                   # Implementation plan files
-│   └── knowhow/                 # Accumulated implementation insights
-└── .gitignore / .claudeignore
-```
-
-## Framework Skills
-
-Skills provided by ADDF (invoked via `/command-name`):
-
-### Knowhow Management
-
-| Skill | Invocation | Description |
-|---|---|---|
-| **addf-knowhow** | `/addf-knowhow <topic>` | Records implementation insights in `docs/knowhow/`. Automatically checks for duplicates and merges with existing knowhow |
-| **addf-knowhow-index** | `/addf-knowhow-index [reindex]` | References the knowhow index, or rebuilds it with `reindex` |
-| **addf-knowhow-filter** | `/addf-knowhow-filter <plan-path>` | Filters and returns only knowhow relevant to a given Plan |
-
-### Development Loop
-
-| Skill | Invocation | Description |
-|---|---|---|
-| **addf-dev-loop** | `/loop 1h /addf-dev-loop` | Autonomously selects unfinished tasks from TODO.md, implements them, runs quality verification, and commits |
-
-### Experience Management
-
-| Skill | Invocation | Description |
-|---|---|---|
-| **addf-experience** | `/addf-experience` | Validates file mention syntax in skill experience files (`.exp.md`) |
-
-### GUI Testing (Optional)
-
-To enable, set `enable = true` in `.claude/addf-Behavior.toml`. macOS only.
-
-| Skill | Invocation | Description |
-|---|---|---|
-| **addf-gui-test** | `/addf-gui-test <scenario>` | Runs GUI tests based on scenarios in `docs/test-scenarios/` |
-| **addf-annotate-grid** | `/addf-annotate-grid <path>` | Draws grid lines and coordinate labels on PNG images (for LLM coordinate recognition) |
-| **addf-clip-image** | `/addf-clip-image <path>` | Clips a specified region from a PNG image (for extracting areas of interest) |
-
-## Framework Agents
-
-Sub-agents automatically launched during quality gates and boot sequences:
-
-| Agent | Purpose | Trigger |
-|---|---|---|
-| **addf-knowhow-agent** | Filters knowhow relevant to a Plan | Boot sequence (at task start) |
-| **addf-code-review-agent** | Reviews code quality and readability | Quality verification (at task completion) |
-| **addf-security-review-agent** | Inspects and reports security vulnerabilities | Quality verification (optional) |
-| **addf-contribution-agent** | Detects contribution candidates for the framework | Quality verification (at task completion) |
-| **addf-ui-test-agent** | Visual UI verification via screenshots and image analysis | Quality verification (optional) |
-
-## Development Process
-
-```
-Plan → Implementation → Quality Verification → Commit
-```
-
-- **Plan-Driven**: Review plans, not code. Sound plans are accepted; AI ensures implementation quality
-- **Boot Sequence**: At session start, reads Feedback → TODO → Progress to understand current state
-- **Quality Gate**: Build/Lint/Test → Code Review → Security Review (optional)
-- **Parallel Implementation**: Parallel subtask execution using git worktrees
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+| Guide | Content |
+|---|---|
+| [Detailed Setup](docs/guides/setup.md) | Manual setup, configuration roles, directory structure |
+| [Skills](docs/guides/skills.md) | All ADDF skills with invocation and descriptions |
+| [Agents](docs/guides/agents.md) | Sub-agents auto-launched during quality gates |
+| [Development Process](docs/guides/development-process.md) | Boot sequence, quality gates, task lifecycle |
+| [Migration](docs/guides/migration.md) | Upgrading ADDF with `/addf-migrate` |
+| [Codex Setup](docs/guides/codex-setup.md) | Using ADDF with OpenAI Codex CLI |
+| [GUI Testing](docs/guides/gui-test-setup.md) | macOS GUI test setup |
 
 ## About the Name
 
