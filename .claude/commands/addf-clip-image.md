@@ -1,6 +1,8 @@
 ---
 name: addf-clip-image
-description: PNG 画像の指定領域を切り出す。annotate-grid で座標確認後、注目領域だけを LLM に渡す際に使う。
+description: |
+  PNG 画像の指定領域を切り出す。annotate-grid で座標確認後、注目領域だけを LLM に渡す際に使う。
+  画像の一部分だけを拡大して確認したいとき、特定の UI コンポーネントを切り出して検証したいときに使う。
 user_invocable: true
 ---
 

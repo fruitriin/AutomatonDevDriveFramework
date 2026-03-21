@@ -18,7 +18,7 @@
 | 7 | 7 | `docs/plans-add/0007-testing-and-rename.md` | 完了 |
 | 8 | 8 | `docs/plans-add/0008-robustness-and-consistency.md` | 完了 |
 | 9 | 9 | `docs/plans-add/0009-experience-bootstrap.md` | 完了 |
-| 10 | 10 | `docs/plans-add/0010-skill-description-and-metrics.md` | 未着手 |
+| 10 | 10 | `docs/plans-add/0010-skill-description-and-metrics.md` | 完了 |
 | 11 | 11 | `docs/plans-add/0011-version-lockfile-and-migration.md` | 完了 |
 | 12 | 12 | `docs/plans-add/0012-codex-support.md` | 完了 |
 | 13 | 13 | `docs/plans-add/0013-addf-init.md` | 完了 |

@@ -54,3 +54,18 @@ PreToolUse フックでスキル呼び出しをログする仕組みを導入す
 
 ## 見積もり
 AI 実装: 15-20 分
+
+## 実装結果
+
+### 完了した項目
+- 9スキルの description にトリガー条件（「〜のとき使う」）を追記
+- `.claude/hooks/skill-usage-log.sh` — PreToolUse フックでスキル使用を JSONL ログ
+- `settings.json` に PreToolUse Skill マッチャーのフック登録
+- `.gitignore` に `.claude/logs/` 追加
+
+### 改善されなかったスキル（既にトリガー条件が明確）
+- `addf-init` — 「導入するとき」「整合性を確認したいとき」が既に記載
+- `addf-lint` — 「品質ゲート前、CI、設定変更後に使う」が既に記載
+- `addf-migrate` — 「アップデート・バージョンアップ・マイグレーションを行いたいとき」が既に記載
+
+## 状態: 完了（2026-03-21）

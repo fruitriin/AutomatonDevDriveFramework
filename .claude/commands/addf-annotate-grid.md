@@ -1,6 +1,8 @@
 ---
 name: addf-annotate-grid
-description: PNG 画像にグリッド線と座標ラベルを描画する。LLM による画像判定の前に座標系を確立するために使う。
+description: |
+  PNG 画像にグリッド線と座標ラベルを描画する。LLM による画像判定の前に座標系を確立するために使う。
+  スクリーンショットや UI 画像の特定領域を座標で指定したいとき、画像内の要素位置を正確に伝えたいときに使う。
 user_invocable: true
 ---
 

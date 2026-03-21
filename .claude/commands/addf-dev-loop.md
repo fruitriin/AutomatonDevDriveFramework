@@ -3,6 +3,7 @@ name: addf-dev-loop
 description: |
   TODO.md から未実施タスクを自律的に選んで実装するループ処理。
   `/loop 1h /addf-dev-loop` として使用する。
+  タスクを自動で進めたいとき、開発を自律的に回したいとき、バックログを消化したいときに使う。
 user_invocable: true
 ---
 

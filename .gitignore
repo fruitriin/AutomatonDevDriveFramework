@@ -6,6 +6,11 @@ node_modules
 
 # フック状態ファイル（セッションローカル）
 .claude/.turn-count
+
+# スキル使用ログ（ローカル計測、共有しない）
+.claude/logs/
+
+# ローカル設定ファイル（個人環境固有）
 CLAUDE.local.md
 CLAUDE.repo.md
 .claude/skills/addf-gui-test.md

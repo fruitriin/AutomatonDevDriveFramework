@@ -1,6 +1,8 @@
 ---
 name: addf-knowhow-filter
-description: Plan ファイルの内容を受け取り、docs/knowhow/ から関連するノウハウのパスと要約だけを返す。ブートシーケンスだけでなく開発中いつでも利用してよい。
+description: |
+  Plan ファイルの内容を受け取り、docs/knowhow/ から関連するノウハウのパスと要約だけを返す。ブートシーケンスだけでなく開発中いつでも利用してよい。
+  タスク開始時に関連ノウハウを把握したいとき、実装中に参考になる知見を探したいときに使う。
 context: fork
 user_invocable: true
 ---

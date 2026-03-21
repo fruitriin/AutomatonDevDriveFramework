@@ -1,6 +1,8 @@
 ---
 name: addf-gui-test
-description: GUI テストシナリオを実行する。docs/test-scenarios/ のシナリオファイルを読み、.claude/addfTools/ のツールを使ってテストを実施する。
+description: |
+  GUI テストシナリオを実行する。docs/test-scenarios/ のシナリオファイルを読み、.claude/addfTools/ のツールを使ってテストを実施する。
+  UI の見た目や動作を視覚的に検証したいとき、スクリーンショットベースの回帰テストを行いたいときに使う。
 user_invocable: true
 ---
 

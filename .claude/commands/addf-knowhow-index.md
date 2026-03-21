@@ -3,6 +3,7 @@ name: addf-knowhow-index
 description: |
   docs/knowhow/ のインデックスを参照して「何を知っているか」を把握する。reindex 引数でインデックスを再構築する。
   ADD フレームワーク本体では INDEX.addf.md、ダウンストリームプロジェクトでは INDEX.md を使用する。
+  プロジェクトの知見ベースを確認したいとき、ノウハウの追加・削除後にインデックスを更新したいときに使う。
 context: fork
 user_invocable: true
 ---
