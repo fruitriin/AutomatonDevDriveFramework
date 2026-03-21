@@ -67,6 +67,7 @@ ADDF フレームワークを最新版（またはターゲットバージョン
 - `CONTRIBUTING.md` — コントリビューションガイド
 - `.claudeignore` — Claude 除外設定
 - `.claude/ADDF-CHANGELOG.md` — 変更履歴
+- `.claude/ADDF-Release.addf.md` — ADDF リリース手順
 - `docs/knowhow/ADDF/` — ADDF ノウハウ
 
 **マイグレーション対象外（スキップ）:**
