@@ -11,125 +11,44 @@ user_invocable: true
 
 ## 引数
 
-- **引数なし**: 自動でバージョンを判定してリリース
-- `major` / `minor` / `patch`: バージョンバンプの種別を指定
-- `--dry-run`: 実際のリリースは行わず、変更内容のプレビューのみ表示
+- `$ARGUMENTS`: バージョン指定（`major` / `minor` / `patch`）や `--dry-run` 等。リリース設定に渡す。
 
-## Phase 1: プロジェクト種別の判定
+## 手順
 
-1. `CLAUDE.repo.md`（または `CLAUDE.repo.example.md`）を読み、プロジェクト種別を判定する:
-   - 「**ADDF 開発プロジェクト**」を含む → **upstream**（ADDF 本体）
-   - 「**ADDF 利用プロジェクト**」を含む、またはどちらも含まない → **downstream**
+### 1. プロジェクト種別の判定
 
-2. 種別に応じてリリース設定ファイルを読む:
-   - **upstream**: `.claude/ADDF-Release.addf.md` を読む
-   - **downstream**: `.claude/Release.md` が存在すれば読む。なければデフォルト手順を使用
+`CLAUDE.repo.md`（または `CLAUDE.repo.example.md`）を読み、プロジェクト種別を判定する:
+- 「**ADDF 開発プロジェクト**」を含む → **upstream**
+- それ以外 → **downstream**
 
-3. `addf-release.exp.md` が存在すれば読み、過去のリリース経験を考慮する
+### 2. リリース手順の読み込み
 
-## Phase 2: リリース対象の確認
+種別に応じてリリース手順を決定する:
 
-4. 前回リリースからの変更を収集する:
-   - upstream: `.claude/addf-lock.json` の `version` と `commit` を基点にする
-   - downstream: 最新の git tag を基点にする（tag がなければ全コミット）
+**upstream の場合:**
+1. `.claude/ADDF-Release.addf.md` を読む（必須）
+2. `addf-release.exp.md` が存在すれば読み、過去の経験を考慮する
 
-5. 変更をカテゴリ分けする:
-   - **追加**: 新機能、新ファイル
-   - **変更**: 既存機能の改善
-   - **修正**: バグ修正
-   - **削除**: 機能の削除
-   - コミットメッセージの `[領域]` プレフィックスを参考にカテゴリを判定
+**downstream の場合:**
+1. `addf-release.exp.md` を読む（リリース戦略の定義元）
+2. 存在しなければ、ユーザーに対話的にリリース戦略をヒアリングして `addf-release.exp.md` を新規作成する:
+   - バージョニングを行うか（semver / calver / なし）
+   - チェンジログを管理するか（CHANGELOG.md / GitHub Releases のみ / なし）
+   - バージョン更新対象ファイル（package.json / Cargo.toml / pyproject.toml / 独自）
+   - Publish 手順（npm publish / cargo publish / Docker / デプロイ / なし）
+   - プレリリースチェック（ビルド / テスト / Lint）
+   - 構造は `.claude/ADDF-Release.addf.md` を参考にしてよいが、プロジェクトの要件に合わせて作り直す
 
-6. ワーキングツリーがクリーンか確認する（未コミットの変更があれば中断）
+### 3. リリース手順の実行
 
-## Phase 3: バージョン採番
+読み込んだリリース手順（ADDF-Release.addf.md または addf-release.exp.md）に記載された内容を上から順に実行する。
 
-7. 引数でバージョンバンプが指定されていればそれを使用。未指定の場合:
-   - **削除** カテゴリがある → `major`（破壊的変更の可能性）
-   - **追加** カテゴリがある → `minor`（新機能追加）
-   - **変更・修正** のみ → `patch`
-   - ユーザーに提案して確認を求める: 「v0.1.0 → v0.2.0 (minor) でよいですか？」
+### 4. 経験の更新
 
-8. セマンティックバージョニングに従いバージョン番号を算出する
-
-## Phase 4: チェンジログ作成
-
-9. 変更カテゴリに基づいてチェンジログエントリを生成する:
-
-   **upstream の場合**: `.claude/ADDF-CHANGELOG.md` に追記
-   ```markdown
-   ## [0.2.0] - 2026-03-21
-
-   ### 追加
-   - `/addf-init` スキル — プロジェクト初期化と構造検証
-   - `/addf-release` スキル — リリース自動化
-   - `AGENTS.md` — Codex サポート
-
-   ### 変更
-   - 全スキルの description にトリガー条件を追加
-   - README をクイックスタート中心に簡素化
-   ```
-
-   **downstream の場合**: `CHANGELOG.md`（プロジェクトルート）に追記
-   - `CHANGELOG.md` が存在しなければ新規作成
-
-10. 生成したエントリをユーザーに表示し、編集の機会を提供する
-
-## Phase 5: リリース設定ファイルの手順を実行
-
-11. リリース設定ファイル（ADDF-Release.addf.md / Release.md）に記載された手順を順番に実行する:
-    - 各ステップの実行前にユーザーに確認（`--dry-run` 時はスキップして表示のみ）
-    - 設定ファイルがない場合はデフォルト手順（Phase 6）のみ実行
-
-## Phase 6: 共通リリース手順
-
-12. バージョン関連ファイルを更新する:
-    - **upstream**: `.claude/addf-lock.json` の `version` と `commit` を更新
-    - **downstream**: `package.json` 等のバージョンフィールドがあれば更新（リリース設定で指定）
-
-13. リリースコミットを作成する:
-    ```
-    [リリース] v0.2.0
-    ```
-
-14. git tag を作成する:
-    ```bash
-    git tag v0.2.0
-    ```
-
-15. ユーザーに push 確認を求める:
-    ```
-    リリース準備完了:
-      バージョン: v0.2.0
-      コミット: abc1234
-      タグ: v0.2.0
-
-    push しますか？ (git push && git push --tags)
-    ```
-
-## Phase 7: 完了レポート
-
-16. リリース結果を表示する:
-    ```
-    ╔══════════════════════════════════════╗
-    ║  Release Complete                    ║
-    ╚══════════════════════════════════════╝
-
-    バージョン: v0.1.0 → v0.2.0
-    チェンジログ: 追加 3, 変更 2, 修正 0
-    タグ: v0.2.0
-    push: 完了
-
-    次のステップ:
-    1. GitHub Release を作成してください（任意）
-    ```
+実行後、新たな教訓があれば `addf-release.exp.md` に追記する。
 
 ## Gotchas
 
 - **upstream リリースは ADDF 全体に影響する**: ダウンストリームの `/addf-migrate` はこのバージョンを参照する
 - **`--dry-run` を推奨**: 初回リリース時は必ず dry-run で内容を確認すること
-- **チェンジログの手動編集**: 自動生成されたエントリは機械的なため、リリース前に人間が読みやすく編集する機会を設けている
-
-## 経験の活用
-- 実行前に `addf-release.exp.md` が存在すれば読み、過去の経験を考慮する
-- 実行後、新たな教訓があれば `addf-release.exp.md` に追記する
+- **downstream の初回実行**: exp ファイルがないため対話的にリリース戦略を構築する。2回目以降は exp に蓄積された戦略に従う

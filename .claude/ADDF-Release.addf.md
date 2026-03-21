@@ -1,7 +1,8 @@
-# ADDF Release — アップストリームリリース手順
+# ADDF Release — アップストリームリリース設定
 
 > このファイルは ADDF 本体（upstream）のリリース時に `/addf-release` が参照する。
 > ダウンストリームプロジェクトでは使用しない。
+> 各セクションは `/addf-release` スキルの対応する Phase から呼び出される。
 
 ## プレリリースチェック
 
@@ -18,7 +19,7 @@
 
 ## チェンジログの書式
 
-Keep a Changelog 形式（https://keepachangelog.com/）に準拠:
+Keep a Changelog 形式（https://keepachangelog.com/）に準拠。日本語で記述:
 
 ```markdown
 ## [X.Y.Z] - YYYY-MM-DD
@@ -41,7 +42,7 @@ Keep a Changelog 形式（https://keepachangelog.com/）に準拠:
 1. リリースコミットを作成: `[リリース] vX.Y.Z`
 2. タグを作成: `git tag vX.Y.Z`
 3. push: `git push && git push --tags`
-4. GitHub Release を作成（`gh release create vX.Y.Z --generate-notes` を提案）
+4. GitHub Release を作成: `gh release create vX.Y.Z --generate-notes` を提案
 
 ## リリース後
 
