@@ -10,7 +10,9 @@ On session start, read these files in order:
 1. `.claude/Feedback.md` — Check for unresolved improvement actions
 2. `TODO.md` — Review task backlog and priorities
 3. `.claude/Progress.md` — Continue in-progress tasks or select next
-4. If no pending tasks — ask the owner for the next task
+4. If no pending tasks:
+   - If `docs/plans/` has no plan files (first-time project): scan the project, ask the owner about goals/priorities/constraints, then create 2-3 initial plan files and register them in TODO.md
+   - Otherwise: ask the owner for the next task
 5. Before starting a plan, read relevant files in `docs/knowhow/` directly
 
 ## Development Process
